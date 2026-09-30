@@ -10,7 +10,7 @@
   "scripts": {
     "dev:api": "npm --prefix apps/api run dev",
     "dev:web": "npm --prefix apps/web run dev",
-    "build:packages": "npm --prefix packages/shared-types run build && npm --prefix packages/crypto run build && npm --prefix packages/watermark run build && npm --prefix packages/ledger run build && npm --prefix packages/config run build",
+    "build:packages": "npm --prefix packages/shared-types run build && npm --prefix packages/crypto run build && npm --prefix packages/watermark run build && npm --prefix packages/ledger run build && npm --prefix packages/database run build && npm --prefix packages/config run build",
     "admin:bootstrap": "npm --prefix apps/api run admin:bootstrap",
     "admin:create": "npm --prefix apps/api run admin:create",
     "seed:test": "npm --prefix apps/api run seed:test",

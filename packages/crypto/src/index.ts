@@ -1,5 +1,5 @@
 import * as crypto from 'crypto';
-import { IProvenanceRecord } from '@netra-shakti/shared-types';
+import type { IProvenanceRecord } from '@netra-shakti/shared-types';
 
 export interface EncryptedPayload {
   encryptedData: Buffer;

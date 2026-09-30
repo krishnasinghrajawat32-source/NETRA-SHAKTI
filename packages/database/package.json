@@ -1,12 +1,17 @@
 {
   "name": "@netra-shakti/database",
   "version": "1.0.0",
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
   "dependencies": {
     "@prisma/client": "^5.14.0"
   },
   "devDependencies": {
-    "prisma": "^5.14.0"
+    "prisma": "^5.14.0",
+    "typescript": "^5.4.5"
   }
 }
