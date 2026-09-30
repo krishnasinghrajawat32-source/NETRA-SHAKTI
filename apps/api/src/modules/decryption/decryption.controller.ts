@@ -26,7 +26,7 @@ export class DecryptionController {
       this.fallbackDecryptionService = new DecryptionService(
         new StorageService(),
         new WatermarkService(),
-        new LedgerService(new AuditService()),
+      new LedgerService(),
         new AuditService()
       );
     }

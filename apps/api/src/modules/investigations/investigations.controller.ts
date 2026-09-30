@@ -39,7 +39,7 @@ export class InvestigationsController {
       this.fallbackInvestigationsService = new InvestigationsService(
         new StorageService(),
         new WatermarkService(),
-        new LedgerService(new AuditService()),
+      new LedgerService(),
         new MLService(),
         new AuditService()
       );

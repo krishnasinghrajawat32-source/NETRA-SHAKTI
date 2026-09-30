@@ -64,7 +64,8 @@ export class HealthService {
         cryptoProvider: { status: 'UP', algorithm: 'AES-256-GCM + Ed25519', pqcReady: pqcStatus.active },
         watermarkEngine: { status: 'UP', algorithm: 'NETRA-DCT-STEGO-V2', version: '2.4.0' },
         ledgerEngine: { status: 'UP', type: ledgerStatus.provider, currentSequence: ledgerStatus.latestSequence },
-        mlService: { status: mlHealth.status, activeModel: mlHealth.activeModel, latencyMs: mlHealth.latencyMs }
+        // Normalize ML health status to the expected union: 'UP' | 'DOWN' | 'OFFLINE'
+        mlService: { status: (mlHealth && (mlHealth.status === 'UP' || mlHealth.status === 'DOWN' || mlHealth.status === 'OFFLINE') ? mlHealth.status : 'OFFLINE'), activeModel: mlHealth.activeModel, latencyMs: mlHealth.latencyMs }
       }
     };
   }

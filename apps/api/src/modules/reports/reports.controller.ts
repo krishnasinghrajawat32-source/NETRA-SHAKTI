@@ -7,6 +7,7 @@ import { AuditService } from '../audit/audit.service';
 import { WatermarkService } from '../watermark/watermark.service';
 import { MLService } from '../ml/ml.service';
 import { StorageService } from '../storage/storage.service';
+import { LedgerService } from '../ledger/ledger.service';
 import { JwtAuthGuard, RolesGuard, Roles, CurrentUser } from '../../common/guards/auth.guards';
 import { UserRole, IUser } from '@netra-shakti/shared-types';
 
@@ -35,10 +36,11 @@ export class ReportsController {
     if (this.investigationsService) return this.investigationsService;
     if (!this.fallbackInvestigationsService) {
       this.fallbackInvestigationsService = new InvestigationsService(
-        new WatermarkService(),
-        new MLService(),
-        new AuditService(),
-        new StorageService()
+      new StorageService(),
+      new WatermarkService(),
+      new LedgerService(),
+      new MLService(),
+      new AuditService()
       );
     }
     return this.fallbackInvestigationsService;
