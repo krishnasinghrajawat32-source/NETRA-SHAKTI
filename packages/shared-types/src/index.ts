@@ -212,6 +212,9 @@ export interface IDecryptionSession {
   watermarkId?: string | null;
   signatureId?: string | null;
   ledgerEventId?: string | null;
+  watermark?: IWatermark | null;
+  signature?: IDigitalSignature | null;
+  ledgerEvent?: ILedgerEvent | null;
   errorMessage?: string | null;
 }
 
@@ -219,8 +222,10 @@ export interface IWatermark {
   id: string;
   watermarkCode: string;
   documentId: string;
+  document?: IDocument | null;
   recipientId: string;
   sessionId: string;
+  session?: IDecryptionSession | null;
   payloadHash: string;
   algorithm: string;
   version: string;
