@@ -8,18 +8,19 @@
     "start": "next start -p 3001"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.4.0",
+    "@swc/helpers": "^0.5.11",
+    "@vercel/analytics": "^2.0.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.1.9",
+    "lucide-react": "^0.378.0",
     "next": "^14.2.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "lucide-react": "^0.378.0",
-    "framer-motion": "^11.1.9",
-    "recharts": "^2.12.7",
-    "clsx": "^2.1.1",
-    "tailwind-merge": "^2.3.0",
-    "zod": "^3.23.8",
     "react-hook-form": "^7.51.4",
-    "@hookform/resolvers": "^3.4.0",
-    "@swc/helpers": "^0.5.11"
+    "recharts": "^2.12.7",
+    "tailwind-merge": "^2.3.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",
