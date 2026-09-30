@@ -1,0 +1,44 @@
+[
+  {
+    "sequenceNumber": 1,
+    "eventType": "LEDGER_GENESIS_INITIALIZATION",
+    "entityType": "SYSTEM",
+    "entityId": "NETRA-SHAKTI-ROOT",
+    "payloadHash": "ff4a984e973d2ed0ccafc20850dbb8bb2be6493901d7b92ef3014b66a8dc0c04",
+    "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "eventHash": "4de713fa7bf4692f2ef0401cae0f988c60da9aae2e06439c5168ef15ec11ed74",
+    "signature": "3636984a6b077d18491f0729cc0a9305c984009217ed3f90177c7e8da76af3bf",
+    "actorId": "938457c4-f6f0-44e0-ad15-d7bd51b1603f",
+    "createdAt": "2026-09-28T19:18:27.864Z",
+    "id": "97f979a4-0dcf-4ddf-a23b-e8782322b567",
+    "updatedAt": "2026-09-28T19:18:27.864Z"
+  },
+  {
+    "sequenceNumber": 2,
+    "eventType": "DOCUMENT_DECRYPTED_AND_ISSUED",
+    "entityType": "DECRYPTION_SESSION",
+    "entityId": "6e70b529-d68c-41b8-9192-8e7688112ee6",
+    "payloadHash": "f2f9ef0632eebeb331f9c24699167aa4a280a35a7014713a8d6d30a6a69a4117",
+    "previousHash": "4de713fa7bf4692f2ef0401cae0f988c60da9aae2e06439c5168ef15ec11ed74",
+    "eventHash": "f4deea7bfe7a79d2ea036791c2907d91cf5f36e3a11378239e98911466d1222a",
+    "signature": "8a4c7d67e7fdd84adb8ae3ecda1b934a6d048a85f70481d85d931798bd7aca2c",
+    "actorId": "d20a9455-0674-4f6c-88e1-07b98846d80d",
+    "createdAt": "2026-09-28T19:18:27.867Z",
+    "id": "285a1b55-a59b-4633-a64f-f171f8389f47",
+    "updatedAt": "2026-09-28T19:18:27.868Z"
+  },
+  {
+    "sequenceNumber": 3,
+    "eventType": "DOCUMENT_DECRYPTED_AND_ISSUED",
+    "entityType": "DECRYPTION_SESSION",
+    "entityId": "6e70b529-d68c-41b8-9192-8e7688112ee6",
+    "payloadHash": "47466cc1e2baec3e0d732079d3b72d88d824278dda8131c38c7991fda1076cd1",
+    "previousHash": "f4deea7bfe7a79d2ea036791c2907d91cf5f36e3a11378239e98911466d1222a",
+    "eventHash": "e87ffbc93f95e61d4594b789250f6993256af813c5170ac79d45a6be2d900e2c",
+    "signature": "846c82d236c4c194c0c3277b14c278afbb7a3c7cc3b6bc5a1d3bb11c9130111e",
+    "actorId": "d20a9455-0674-4f6c-88e1-07b98846d80d",
+    "createdAt": "2026-09-28T19:36:11.453Z",
+    "id": "f0f6326b-befb-46d1-ac6c-761762c80dc0",
+    "updatedAt": "2026-09-28T19:36:11.453Z"
+  }
+]

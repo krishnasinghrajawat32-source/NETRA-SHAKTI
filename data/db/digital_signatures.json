@@ -1,0 +1,14 @@
+[
+  {
+    "sessionId": "6e70b529-d68c-41b8-9192-8e7688112ee6",
+    "signerId": "d20a9455-0674-4f6c-88e1-07b98846d80d",
+    "algorithm": "Ed25519",
+    "payloadHash": "8f4060ac763b9c40cc3e73839f7fdcdf6e1d7d38bb0a79e04e84b4099851b9d9",
+    "signature": "028fe80714cfe5995b6017806c78ee028bc1c47e0608e3357db37d828651f6fad739792f4547c06efc3718415f9cbf6c7030307c8081150b2da693c6f03e3c05",
+    "keyVersion": 1,
+    "verificationStatus": "VERIFIED",
+    "id": "1511fd02-291b-43ba-b37d-ea64df9e001f",
+    "createdAt": "2026-09-28T19:18:27.857Z",
+    "updatedAt": "2026-09-28T19:36:11.449Z"
+  }
+]

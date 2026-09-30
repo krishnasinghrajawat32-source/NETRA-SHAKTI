@@ -1,0 +1,37 @@
+{
+  "name": "netra-shakti",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "description": "Cryptographic Attribution and Immutable Decryption Provenance System",
+  "scripts": {
+    "dev:api": "npm --prefix apps/api run dev",
+    "dev:web": "npm --prefix apps/web run dev",
+    "build:packages": "npm --prefix packages/shared-types run build && npm --prefix packages/crypto run build && npm --prefix packages/watermark run build && npm --prefix packages/ledger run build && npm --prefix packages/config run build",
+    "admin:bootstrap": "npm --prefix apps/api run admin:bootstrap",
+    "admin:create": "npm --prefix apps/api run admin:create",
+    "seed:test": "npm --prefix apps/api run seed:test",
+    "test": "node --test --import tsx \"tests/**/*.test.ts\""
+  },
+  "keywords": [
+    "cybersecurity",
+    "cryptography",
+    "digital-forensics",
+    "watermarking",
+    "immutable-ledger",
+    "air-gapped"
+  ],
+  "author": "NETRA SHAKTI Team",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "prisma": "^5.22.0",
+    "tsx": "^4.19.2"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0"
+  }
+}

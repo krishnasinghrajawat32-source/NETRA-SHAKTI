@@ -1,0 +1,20 @@
+[
+  {
+    "documentCode": "DOC-NS-TRISHUL-2026",
+    "title": "Operation Trishul: Strategic Air Defense Protocol",
+    "description": "Comprehensive operational guidelines for electronic countermeasures and radar network sync.",
+    "originalFilename": "Operation_Trishul_Protocol.pdf",
+    "mimeType": "application/pdf",
+    "size": 1671,
+    "pageCount": 1,
+    "classification": "SECRET",
+    "ownerId": "d2b167cf-8fe3-451d-a421-437414804fd4",
+    "encryptedObjectKey": "encrypted-docs/DOC-NS-TRISHUL-2026.enc",
+    "originalHash": "d5c2d515d2e7f3baba5d36651897d5f8af4483d3141235c560ec62f4ea5b35f7",
+    "encryptedHash": "9c35b08c10c98025b570d98a70fc68095ef15f0dfbd2adb196195c6ed3128c91",
+    "status": "DISTRIBUTED",
+    "id": "2e9902cb-d130-4a92-8a30-f54b172a37df",
+    "createdAt": "2026-09-28T19:18:27.781Z",
+    "updatedAt": "2026-09-28T19:36:11.330Z"
+  }
+]

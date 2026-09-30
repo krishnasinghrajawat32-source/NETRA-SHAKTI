@@ -1,0 +1,13 @@
+[
+  {
+    "userId": "3eea53a4-1619-4832-9c06-e5a0a0b2b942",
+    "signingPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAjSlxGjEjTUxN3Y05iW2Naa5dvz0ZYDb1YGWuATpqy88=\n-----END PUBLIC KEY-----\n",
+    "encryptionPublicKey": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAmYjAUiJBmZuKzK23J+WO\nqws3tFw0c3IX4Cp4Kq+FvHmZnIiErsXSAaMkN4n5cwnqJRcKLKVo6UxjJFSeBgS+\nlaz0MTNyt2i2Zbll4i5Y404LkxuybxSOHCVSmhLpwwGQFLHH8bxKmLP5fj7ESMUP\nBdb9k61a8JSTorBZIbV21wgMiFfKYXcWduq2KsN09sMZvjNyrfxLuMtn5Y4VFc9t\nXs3OXfrhRo7bv+M09nQ/f7+EfSNUjeF89sfAX9W/7ePzna9g2KRgJGQhO2IKH7IK\nfLMHJbEjW0DxWQyngF48Ch454jYhgDfYtAjgTBw+iIKjjK6tMcMX4hg4r2uh2xjq\n5wWbDpIcoaBq9RMdKEnheA4uCCeI8fPJ4g177ROXBj4lZPqeKo+Zy6GVbVco4ANO\na7b4FJ1EjSZXooriUrSsfn0UNf1D9BhzIbtzjC0u8olrwCRAV5mbI0gNGFBWF7zX\nN/xO0h2DM+RGwTuFkOSYFBNGYdPrZJPWeHYe/LrAGL8zRwqdaeaeK1XHMpkOaRuE\nS9FOQVS+SPXxqGSPzth46VrxzvzSRc66skwoV+n6jSi0kY+a4r4obI1pZch5zJwI\nXV8GS7p8i9a19ArgM6qrVRk8qwE6YolO2HX36L2tNg/FMFn2xYqPjJxBwZBVwJnB\nfg6mtOoj1XKeIkxwccbc7eMCAwEAAQ==\n-----END PUBLIC KEY-----\n",
+    "algorithm": "Ed25519+RSA-4096-OAEP",
+    "keyVersion": 1,
+    "status": "ACTIVE",
+    "id": "09a994b1-8f26-4589-bcca-b67cbc551725",
+    "createdAt": "2026-09-26T17:33:37.492Z",
+    "updatedAt": "2026-09-26T17:33:37.492Z"
+  }
+]

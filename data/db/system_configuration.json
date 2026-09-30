@@ -1,0 +1,10 @@
+[
+  {
+    "key": "KEY_WRAP_2e9902cb-d130-4a92-8a30-f54b172a37df",
+    "value": "{\"wrappedKey\":\"2b19bea90e99dcdbbfed0e016cbad141136ef0b79afd064dfe5b7ad447ae3f08\",\"iv\":\"91f017b90102201205ae9f04\",\"authTag\":\"63d57196d832878e349beff7117a41c1\",\"keyVersion\":1}",
+    "description": "Wrapped AES-256 key for document 2e9902cb-d130-4a92-8a30-f54b172a37df",
+    "id": "25945656-72cc-46df-9117-2e49e226c3ca",
+    "createdAt": "2026-09-28T19:18:27.784Z",
+    "updatedAt": "2026-09-28T19:36:11.332Z"
+  }
+]

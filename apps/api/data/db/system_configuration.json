@@ -1,0 +1,10 @@
+[
+  {
+    "key": "KEY_WRAP_7845073c-e771-4b7a-a892-a41dbb7839f7",
+    "value": "{\"wrappedKey\":\"a640d34ee557520cc08dd274f1855ef384bb2622ad569241bc9a4737a80b0808\",\"iv\":\"36e5bcfb20fda6f2db199628\",\"authTag\":\"dee06bda659633284f8c30178063bf0f\",\"keyVersion\":1}",
+    "description": "Wrapped AES-256 key for document 7845073c-e771-4b7a-a892-a41dbb7839f7",
+    "id": "d45c2974-a9d2-400b-aff9-f0492aaf3b16",
+    "createdAt": "2026-09-26T18:06:48.431Z",
+    "updatedAt": "2026-09-28T20:07:48.829Z"
+  }
+]

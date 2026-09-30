@@ -1,0 +1,22 @@
+[
+  {
+    "sessionCode": "SESS-NS-DEMO-2026-01",
+    "documentId": "2e9902cb-d130-4a92-8a30-f54b172a37df",
+    "recipientId": "d20a9455-0674-4f6c-88e1-07b98846d80d",
+    "status": "COMPLETED",
+    "startedAt": "2026-09-28T18:18:27.842Z",
+    "completedAt": "2026-09-28T19:18:27.842Z",
+    "sessionNonce": "015efae8f430f2336a6cfe10ea321341ae5c746695ffc0c9d333a533ce8daef1",
+    "issuedObjectKey": "issued-docs/SESS-NS-DEMO-2026-01.pdf",
+    "issuedDocumentHash": "47c8753a25396c5433817f94efb28f24eae9b8df84bd9d72b52c20f7d007906d",
+    "ipAddress": "10.240.12.88",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) NetraSecureBrowser/1.0",
+    "deviceFingerprint": "FP-MIL-STD-810G-09A4",
+    "id": "6e70b529-d68c-41b8-9192-8e7688112ee6",
+    "createdAt": "2026-09-28T19:18:27.842Z",
+    "updatedAt": "2026-09-28T19:36:11.455Z",
+    "watermarkId": "f4efee8d-d0ad-4330-b48c-c85588b3cbd8",
+    "signatureId": "1511fd02-291b-43ba-b37d-ea64df9e001f",
+    "ledgerEventId": "f0f6326b-befb-46d1-ac6c-761762c80dc0"
+  }
+]

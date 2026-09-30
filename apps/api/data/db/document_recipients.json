@@ -1,0 +1,15 @@
+[
+  {
+    "documentId": "7845073c-e771-4b7a-a892-a41dbb7839f7",
+    "recipientId": "c6703673-7690-4a2b-a956-453bc8b4abc7",
+    "assignedById": "d8556a97-f27e-48ee-8300-37154755b949",
+    "policyId": "b8eddb52-14da-4196-9a24-7cfe6748ada6",
+    "status": "ACCESSED",
+    "id": "1f6c3fa8-7fe9-4a85-b5ba-d4073df47eb9",
+    "createdAt": "2026-09-26T18:06:48.435Z",
+    "updatedAt": "2026-09-28T21:09:40.714Z",
+    "accessCount": {
+      "increment": 1
+    }
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "watermarkCode": "WM-NS-C680B688BCDA-80DB",
+    "documentId": "2e9902cb-d130-4a92-8a30-f54b172a37df",
+    "recipientId": "d20a9455-0674-4f6c-88e1-07b98846d80d",
+    "sessionId": "6e70b529-d68c-41b8-9192-8e7688112ee6",
+    "payloadHash": "2e477f43a069715f5a1af82bfa0a88dc097b576e903624f2a034dce1af7f3ddd",
+    "algorithm": "NETRA-DCT-STEGO-V2",
+    "version": "2.4.0",
+    "status": "ACTIVE",
+    "id": "c27ea498-6265-4947-b28a-397d587c9a08",
+    "createdAt": "2026-09-28T19:18:27.846Z",
+    "updatedAt": "2026-09-28T19:18:27.846Z"
+  },
+  {
+    "watermarkCode": "WM-NS-44BEF26EA2CE-ADCA",
+    "documentId": "2e9902cb-d130-4a92-8a30-f54b172a37df",
+    "recipientId": "d20a9455-0674-4f6c-88e1-07b98846d80d",
+    "sessionId": "6e70b529-d68c-41b8-9192-8e7688112ee6",
+    "payloadHash": "27f1466a7696397a9cb6d072efb2750d127715f545ebcf8e7c7ba4b3d7c7eea2",
+    "algorithm": "NETRA-DCT-STEGO-V2",
+    "version": "2.4.0",
+    "status": "ACTIVE",
+    "id": "f4efee8d-d0ad-4330-b48c-c85588b3cbd8",
+    "createdAt": "2026-09-28T19:36:11.402Z",
+    "updatedAt": "2026-09-28T19:36:11.402Z"
+  }
+]

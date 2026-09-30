@@ -1,0 +1,489 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  SUPER_ADMIN
+  ADMIN
+  SENDER
+  RECIPIENT
+  INVESTIGATOR
+}
+
+enum ClearanceLevel {
+  UNCLASSIFIED
+  RESTRICTED
+  CONFIDENTIAL
+  SECRET
+  TOP_SECRET
+}
+
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+  PASSWORD_CHANGE_REQUIRED
+}
+
+enum DocumentClassification {
+  UNCLASSIFIED
+  CONFIDENTIAL
+  SECRET
+  TOP_SECRET
+}
+
+enum DocumentStatus {
+  DRAFT
+  ENCRYPTED
+  DISTRIBUTED
+  REVOKED
+  ARCHIVED
+}
+
+enum RecipientAccessStatus {
+  GRANTED
+  ACCESSED
+  REVOKED
+  EXPIRED
+}
+
+enum DecryptionSessionStatus {
+  CREATED
+  AUTHORIZING
+  DECRYPTING
+  WATERMARKING
+  SIGNING
+  LEDGER_COMMIT
+  COMPLETED
+  FAILED
+}
+
+enum InvestigationStatus {
+  OPEN
+  PROCESSING
+  ANALYSIS_COMPLETED
+  CLOSED
+}
+
+enum InvestigationFindingMatch {
+  VERIFIED_MATCH
+  PARTIAL_MATCH
+  NO_MATCH
+  INVALID_WATERMARK
+  INVALID_SIGNATURE
+  LEDGER_MISMATCH
+  LOW_CONFIDENCE
+  ANALYSIS_FAILED
+}
+
+enum TransformationType {
+  ORIGINAL
+  SCREENSHOT
+  COMPRESSED
+  RESIZED
+  CROPPED
+  ROTATED
+  CAMERA_CAPTURE
+  RE_EXPORTED
+  UNKNOWN
+}
+
+enum AuditEventType {
+  LOGIN_SUCCESS
+  LOGIN_FAILED
+  USER_CREATED
+  USER_UPDATED
+  USER_SUSPENDED
+  DOCUMENT_UPLOADED
+  DOCUMENT_ENCRYPTED
+  RECIPIENT_ASSIGNED
+  RECIPIENT_REVOKED
+  DECRYPTION_STARTED
+  DECRYPTION_FAILED
+  DECRYPTION_COMPLETED
+  WATERMARK_CREATED
+  SIGNATURE_CREATED
+  LEDGER_EVENT_APPENDED
+  INVESTIGATION_CREATED
+  INVESTIGATION_ANALYZED
+  REPORT_EXPORTED
+  KEY_ROTATED
+  PASSWORD_CHANGED
+  SYSTEM_CONFIG_UPDATED
+}
+
+enum MLModelStatus {
+  ACTIVE
+  TRAINING
+  DEPRECATED
+  OFFLINE
+}
+
+model User {
+  id             String         @id @default(uuid())
+  username       String         @unique
+  email          String         @unique
+  displayName    String
+  passwordHash   String
+  role           UserRole       @default(RECIPIENT)
+  department     String         @default("DEFENSE_INTEL")
+  rank           String?
+  unit           String?
+  clearanceLevel ClearanceLevel @default(CONFIDENTIAL)
+  status         UserStatus     @default(ACTIVE)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  sessions             UserSession[]
+  cryptoIdentities     CryptoIdentity[]
+  ownedDocuments       Document[]             @relation("DocumentOwner")
+  assignedDistributions DocumentRecipient[]   @relation("RecipientUser")
+  assignedByMe         DocumentRecipient[]    @relation("AssignedByUser")
+  decryptionSessions   DecryptionSession[]
+  investigations       Investigation[]
+  auditEvents          AuditEvent[]
+  investigationFindings InvestigationFinding[]
+
+  @@index([role])
+  @@index([clearanceLevel])
+  @@index([status])
+}
+
+model UserSession {
+  id               String   @id @default(uuid())
+  userId           String
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  refreshTokenHash String
+  userAgent        String?
+  ipAddress        String?
+  expiresAt        DateTime
+  isRevoked        Boolean  @default(false)
+  createdAt        DateTime @default(now())
+
+  @@index([userId])
+  @@index([refreshTokenHash])
+}
+
+model CryptoIdentity {
+  id                  String    @id @default(uuid())
+  userId              String
+  user                User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  encryptionPublicKey String    @db.Text
+  signingPublicKey    String    @db.Text
+  algorithm           String    @default("Ed25519+RSA-4096")
+  keyVersion          Int       @default(1)
+  status              String    @default("ACTIVE")
+  createdAt           DateTime  @default(now())
+  revokedAt           DateTime?
+
+  @@index([userId])
+  @@index([status])
+}
+
+model Document {
+  id                 String                 @id @default(uuid())
+  documentCode       String                 @unique
+  title              String
+  description        String?
+  originalFilename   String
+  mimeType           String                 @default("application/pdf")
+  size               Int
+  pageCount          Int                    @default(1)
+  classification     DocumentClassification @default(CONFIDENTIAL)
+  ownerId            String
+  owner              User                   @relation("DocumentOwner", fields: [ownerId], references: [id])
+  encryptedObjectKey String
+  originalHash       String                 @db.Text
+  encryptedHash      String                 @db.Text
+  status             DocumentStatus         @default(ENCRYPTED)
+  createdAt          DateTime               @default(now())
+  updatedAt          DateTime               @updatedAt
+
+  policies           DocumentPolicy?
+  recipients         DocumentRecipient[]
+  decryptionSessions DecryptionSession[]
+  watermarks         Watermark[]
+  investigationFindings InvestigationFinding[]
+
+  @@index([ownerId])
+  @@index([classification])
+  @@index([status])
+  @@index([originalHash])
+}
+
+model DocumentPolicy {
+  id                String    @id @default(uuid())
+  documentId        String    @unique
+  document          Document  @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  allowDownload     Boolean   @default(false)
+  allowPrint        Boolean   @default(false)
+  secureViewerOnly  Boolean   @default(true)
+  expiryDate        DateTime?
+  watermarkRequired Boolean   @default(true)
+  signatureRequired Boolean   @default(true)
+  maxAccessCount    Int?      @default(5)
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  documentRecipients DocumentRecipient[]
+}
+
+model DocumentRecipient {
+  id           String                @id @default(uuid())
+  documentId   String
+  document     Document              @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  recipientId  String
+  recipient    User                  @relation("RecipientUser", fields: [recipientId], references: [id], onDelete: Cascade)
+  assignedById String
+  assignedBy   User                  @relation("AssignedByUser", fields: [assignedById], references: [id])
+  assignedAt   DateTime              @default(now())
+  expiresAt    DateTime?
+  status       RecipientAccessStatus @default(GRANTED)
+  policyId     String?
+  policy       DocumentPolicy?       @relation(fields: [policyId], references: [id])
+  accessCount  Int                   @default(0)
+
+  @@unique([documentId, recipientId])
+  @@index([recipientId])
+  @@index([status])
+}
+
+model DecryptionSession {
+  id                 String                  @id @default(uuid())
+  sessionCode        String                  @unique
+  documentId         String
+  document           Document                @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  recipientId        String
+  recipient          User                    @relation(fields: [recipientId], references: [id], onDelete: Cascade)
+  status             DecryptionSessionStatus @default(CREATED)
+  startedAt          DateTime                @default(now())
+  completedAt        DateTime?
+  ipAddress          String?
+  userAgent          String?
+  deviceFingerprint  String?
+  sessionNonce       String                  @db.Text
+  issuedObjectKey    String?
+  issuedDocumentHash String?                 @db.Text
+  watermarkId        String?                 @unique
+  signatureId        String?                 @unique
+  ledgerEventId      String?                 @unique
+  errorMessage       String?
+
+  watermark          Watermark?
+  signature          DigitalSignature?
+  ledgerEvent        LedgerEvent?            @relation(fields: [ledgerEventId], references: [id])
+  investigationFindings InvestigationFinding[]
+
+  @@index([documentId])
+  @@index([recipientId])
+  @@index([status])
+  @@index([issuedDocumentHash])
+}
+
+model Watermark {
+  id            String             @id @default(uuid())
+  watermarkCode String             @unique
+  documentId    String
+  document      Document           @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  recipientId   String
+  sessionId     String             @unique
+  session       DecryptionSession  @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  payloadHash   String             @db.Text
+  algorithm     String             @default("NETRA-DCT-STEGO-V2")
+  version       String             @default("2.4.0")
+  createdAt     DateTime           @default(now())
+  status        String             @default("ACTIVE")
+
+  findings      InvestigationFinding[]
+
+  @@index([documentId])
+  @@index([recipientId])
+}
+
+model DigitalSignature {
+  id                 String            @id @default(uuid())
+  sessionId          String            @unique
+  session            DecryptionSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  signerId           String
+  algorithm          String            @default("Ed25519")
+  payloadHash        String            @db.Text
+  signature          String            @db.Text
+  keyVersion         Int               @default(1)
+  verificationStatus String            @default("VERIFIED")
+  createdAt          DateTime          @default(now())
+
+  @@index([signerId])
+}
+
+model LedgerEvent {
+  id             String             @id @default(uuid())
+  sequenceNumber Int                @unique
+  eventType      String
+  entityType     String
+  entityId       String
+  payloadHash    String             @db.Text
+  previousHash   String             @db.Text
+  eventHash      String             @unique @db.Text
+  signature      String             @db.Text
+  actorId        String
+  createdAt      DateTime           @default(now())
+
+  decryptionSession DecryptionSession?
+
+  @@index([eventType])
+  @@index([entityId])
+  @@index([actorId])
+  @@index([createdAt])
+}
+
+model Investigation {
+  id          String              @id @default(uuid())
+  caseNumber  String              @unique
+  title       String
+  description String?
+  createdById String
+  createdBy   User                @relation(fields: [createdById], references: [id])
+  status      InvestigationStatus @default(OPEN)
+  createdAt   DateTime            @default(now())
+  completedAt DateTime?
+
+  evidence    InvestigationEvidence[]
+  findings    InvestigationFinding[]
+
+  @@index([createdById])
+  @@index([status])
+}
+
+model InvestigationEvidence {
+  id               String        @id @default(uuid())
+  investigationId  String
+  investigation    Investigation @relation(fields: [investigationId], references: [id], onDelete: Cascade)
+  originalFilename String
+  storageObjectKey String
+  contentHash      String        @db.Text
+  mimeType         String
+  size             Int
+  createdAt        DateTime      @default(now())
+
+  inferences       MLInference[]
+
+  @@index([investigationId])
+  @@index([contentHash])
+}
+
+model InvestigationFinding {
+  id                          String                    @id @default(uuid())
+  investigationId             String
+  investigation               Investigation             @relation(fields: [investigationId], references: [id], onDelete: Cascade)
+  watermarkId                 String?
+  watermark                   Watermark?                @relation(fields: [watermarkId], references: [id])
+  documentId                  String?
+  document                    Document?                 @relation(fields: [documentId], references: [id])
+  sessionId                   String?
+  session                     DecryptionSession?        @relation(fields: [sessionId], references: [id])
+  recipientId                 String?
+  recipient                   User?                     @relation(fields: [recipientId], references: [id])
+  matchType                   InvestigationFindingMatch @default(NO_MATCH)
+  confidence                  Float                     @default(0.0)
+  signatureValid              Boolean                   @default(false)
+  ledgerValid                 Boolean                   @default(false)
+  cryptographicWatermarkValid Boolean                   @default(false)
+  transformationType          TransformationType?       @default(ORIGINAL)
+  tamperScore                 Float?                    @default(0.0)
+  similarityScore             Float?                    @default(0.0)
+  forensicNotes               String?                   @db.Text
+  createdAt                   DateTime                  @default(now())
+
+  @@index([investigationId])
+  @@index([watermarkId])
+  @@index([matchType])
+}
+
+model MLModel {
+  id                    String        @id @default(uuid())
+  name                  String
+  version               String
+  task                  String
+  framework             String        @default("PyTorch")
+  artifactPath          String
+  datasetVersion        String
+  accuracy              Float         @default(0.0)
+  precision             Float         @default(0.0)
+  recall                Float         @default(0.0)
+  f1Score               Float         @default(0.0)
+  watermarkRecoveryRate Float         @default(0.0)
+  status                MLModelStatus @default(ACTIVE)
+  createdAt             DateTime      @default(now())
+
+  inferences            MLInference[]
+
+  @@index([status])
+}
+
+model MLInference {
+  id            String                @id @default(uuid())
+  modelId       String
+  model         MLModel               @relation(fields: [modelId], references: [id])
+  evidenceId    String
+  evidence      InvestigationEvidence @relation(fields: [evidenceId], references: [id], onDelete: Cascade)
+  task          String
+  inputHash     String                @db.Text
+  outputPayload Json
+  confidence    Float
+  latencyMs     Int
+  createdAt     DateTime              @default(now())
+
+  @@index([modelId])
+  @@index([evidenceId])
+}
+
+model AuditEvent {
+  id           String         @id @default(uuid())
+  eventType    AuditEventType
+  userId       String?
+  user         User?          @relation(fields: [userId], references: [id])
+  ipAddress    String?
+  userAgent    String?
+  resourceType String?
+  resourceId   String?
+  action       String
+  details      Json?
+  status       String         @default("SUCCESS")
+  createdAt    DateTime       @default(now())
+
+  @@index([eventType])
+  @@index([userId])
+  @@index([createdAt])
+}
+
+model SystemConfiguration {
+  id          String   @id @default(uuid())
+  key         String   @unique
+  value       String   @db.Text
+  description String?
+  updatedAt   DateTime @updatedAt
+
+  @@index([key])
+}
+
+model BackgroundJob {
+  id          String    @id @default(uuid())
+  queue       String
+  name        String
+  data        Json
+  status      String    @default("PENDING")
+  result      Json?
+  error       String?
+  progress    Int       @default(0)
+  attempts    Int       @default(0)
+  createdAt   DateTime  @default(now())
+  processedAt DateTime?
+  finishedAt  DateTime?
+
+  @@index([queue])
+  @@index([status])
+}

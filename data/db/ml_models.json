@@ -1,0 +1,19 @@
+[
+  {
+    "id": "model-resnet18-watermark-v2",
+    "name": "ResNet18-ForensicWatermarkNet",
+    "version": "2.4.0",
+    "task": "WATERMARK_RECOVERY",
+    "framework": "PyTorch + ONNX",
+    "artifactPath": "models/forensic_resnet18_v2.onnx",
+    "datasetVersion": "DEFENSE-SYNTH-V3",
+    "accuracy": 0.987,
+    "precision": 0.991,
+    "recall": 0.984,
+    "f1Score": 0.9875,
+    "watermarkRecoveryRate": 0.965,
+    "status": "ACTIVE",
+    "createdAt": "2026-09-28T19:18:27.872Z",
+    "updatedAt": "2026-09-28T19:36:11.458Z"
+  }
+]

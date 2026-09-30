@@ -1,0 +1,347 @@
+[
+  {
+    "userId": "d8556a97-f27e-48ee-8300-37154755b949",
+    "refreshTokenHash": "04d5f159f6feb8bb52c03f069d2a9eb0a912a4af90de9757fc825a9bb82375fb",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T10:29:26.359Z",
+    "id": "bef8f601-4301-48b1-a3aa-db0730493441",
+    "createdAt": "2026-09-28T10:29:26.360Z",
+    "updatedAt": "2026-09-28T10:29:26.360Z"
+  },
+  {
+    "userId": "d8556a97-f27e-48ee-8300-37154755b949",
+    "refreshTokenHash": "28f9b24fd457c713b3b95531e81b224c3862b2afa35344423da6f9f8a0b9e6be",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T11:13:06.304Z",
+    "id": "90106078-4d1c-464d-bd8a-afa9207eb7cb",
+    "createdAt": "2026-09-28T11:13:06.305Z",
+    "updatedAt": "2026-09-28T11:13:06.305Z"
+  },
+  {
+    "userId": "d8556a97-f27e-48ee-8300-37154755b949",
+    "refreshTokenHash": "9bd613ef8c34249b477de0a5388f7b78b30f3d7911b1ab68dbfb6f1f22b25119",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T17:11:11.837Z",
+    "id": "0277b3d1-0835-4029-a2ab-1edc6552b15d",
+    "createdAt": "2026-09-28T17:11:11.837Z",
+    "updatedAt": "2026-09-28T17:11:11.837Z"
+  },
+  {
+    "userId": "d8556a97-f27e-48ee-8300-37154755b949",
+    "refreshTokenHash": "193776fc36f73a3f32c6ff1db7385bcbe994034b6ed650e85d4e7cceea9e4a27",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T17:11:16.053Z",
+    "id": "0243617b-1805-4ed8-8d24-8e69169e3093",
+    "createdAt": "2026-09-28T17:11:16.053Z",
+    "updatedAt": "2026-09-28T17:11:16.053Z"
+  },
+  {
+    "userId": "873ec113-8f72-4e5a-8b91-77f0f48e3d1a",
+    "refreshTokenHash": "61cbfe69c165a26b3870607720bc18fa896ffd4bcc8a0acdcfcf90e090e33301",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T19:19:37.243Z",
+    "id": "bac3cc62-db2e-49bf-8efe-0e87a7a63c7f",
+    "createdAt": "2026-09-28T19:19:37.243Z",
+    "updatedAt": "2026-09-28T19:19:37.243Z"
+  },
+  {
+    "userId": "873ec113-8f72-4e5a-8b91-77f0f48e3d1a",
+    "refreshTokenHash": "441dddaf6ebe5ee2ed9840a2962e9e63e39059c17d6cabd4af635ab274891700",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T19:20:27.532Z",
+    "id": "095e7bfd-d16a-4a0e-b84f-6048d233dd1a",
+    "createdAt": "2026-09-28T19:20:27.532Z",
+    "updatedAt": "2026-09-28T19:20:27.532Z"
+  },
+  {
+    "userId": "873ec113-8f72-4e5a-8b91-77f0f48e3d1a",
+    "refreshTokenHash": "794df97bd7aa5ba83f1f67ffcee8a6bcbfdfb27d07db245080bb80def2be2b9f",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T19:20:58.596Z",
+    "id": "1ea8ca41-38aa-4359-9efe-44297209a8da",
+    "createdAt": "2026-09-28T19:20:58.596Z",
+    "updatedAt": "2026-09-28T19:20:58.596Z"
+  },
+  {
+    "userId": "873ec113-8f72-4e5a-8b91-77f0f48e3d1a",
+    "refreshTokenHash": "b96763a7178ecd85d85735e848f96cc5a252986c26b3afd2eb084e7e6aa903fd",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T19:22:44.867Z",
+    "id": "54d20192-bb6d-447c-ae7a-444f0fb3b839",
+    "createdAt": "2026-09-28T19:22:44.867Z",
+    "updatedAt": "2026-09-28T19:22:44.867Z"
+  },
+  {
+    "userId": "873ec113-8f72-4e5a-8b91-77f0f48e3d1a",
+    "refreshTokenHash": "b417601278f06d23d7a198cf9fc3ebef9a3b8ae5200292c591273e1cc5f7e7ed",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T19:29:42.131Z",
+    "id": "0548952d-ee08-4f4e-9403-560d5cdf8f3e",
+    "createdAt": "2026-09-28T19:29:42.132Z",
+    "updatedAt": "2026-09-28T19:29:42.132Z"
+  },
+  {
+    "userId": "e509b0fa-c375-494d-8224-3e8422aba096",
+    "refreshTokenHash": "0d3a22ac9a644fe4dd7ca18f8a1d56ca2354ce8ce49ef19c4f13042793d3bcc5",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T19:33:17.378Z",
+    "id": "efe6f69c-48b8-4979-8735-ca53a1480e57",
+    "createdAt": "2026-09-28T19:33:17.379Z",
+    "updatedAt": "2026-09-28T21:09:02.741Z",
+    "isRevoked": true
+  },
+  {
+    "userId": "e509b0fa-c375-494d-8224-3e8422aba096",
+    "refreshTokenHash": "2900ebb718c49959790ce56edcee0cce0750aecbaf7e93fd2a70b911e49efdd2",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T19:36:59.794Z",
+    "id": "008e062c-676b-43ed-b975-b0fab80ae4b4",
+    "createdAt": "2026-09-28T19:36:59.794Z",
+    "updatedAt": "2026-09-28T21:09:02.741Z",
+    "isRevoked": true
+  },
+  {
+    "userId": "c6703673-7690-4a2b-a956-453bc8b4abc7",
+    "refreshTokenHash": "0c87fcbcad641eaf566fbe550a037e9c05ac5458a53974993f61fe3b4f1560f5",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T19:38:28.148Z",
+    "id": "85a81c85-ee83-4896-adf6-5e6b79e7bb3d",
+    "createdAt": "2026-09-28T19:38:28.148Z",
+    "updatedAt": "2026-09-28T19:38:28.148Z"
+  },
+  {
+    "userId": "c6703673-7690-4a2b-a956-453bc8b4abc7",
+    "refreshTokenHash": "198d942efaeff972a3ba0b6ebbbc6aa04d5559d740933ec932414b17736701bb",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T19:39:25.240Z",
+    "id": "57cc7cf6-ce85-4f32-9022-7c8e49755ab0",
+    "createdAt": "2026-09-28T19:39:25.240Z",
+    "updatedAt": "2026-09-28T19:39:25.240Z"
+  },
+  {
+    "userId": "c6703673-7690-4a2b-a956-453bc8b4abc7",
+    "refreshTokenHash": "f711198838db364caaec5ab10f6dc4160b190c0f401926b7a9f0f201de178c5b",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T19:44:41.943Z",
+    "id": "a5f4953f-d645-45db-9aab-2ad471e07772",
+    "createdAt": "2026-09-28T19:44:41.943Z",
+    "updatedAt": "2026-09-28T19:44:41.943Z"
+  },
+  {
+    "userId": "c6703673-7690-4a2b-a956-453bc8b4abc7",
+    "refreshTokenHash": "235ad5830adce3d1fa2b9458942fe6409818b9f484f82e4fa40de7f4bdbf4156",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T20:00:02.760Z",
+    "id": "56802450-13d2-4525-8b7e-da6c6d0447dc",
+    "createdAt": "2026-09-28T20:00:02.761Z",
+    "updatedAt": "2026-09-28T20:00:02.761Z"
+  },
+  {
+    "userId": "c6703673-7690-4a2b-a956-453bc8b4abc7",
+    "refreshTokenHash": "7753e38929ffdbe301bfebe4f158d77ee850fa61b086f58e6ae400a51279fe14",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T20:01:01.173Z",
+    "id": "8a457615-3922-4e1a-b452-ca072ad437cb",
+    "createdAt": "2026-09-28T20:01:01.173Z",
+    "updatedAt": "2026-09-28T20:01:01.173Z"
+  },
+  {
+    "userId": "c6703673-7690-4a2b-a956-453bc8b4abc7",
+    "refreshTokenHash": "87942f1c677bb2a9e3618a356a43102ecad672c684e7e3df15e677fe9c6cda07",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T20:02:54.736Z",
+    "id": "040c56c0-9b71-46ba-82b1-f55a5aa0aba3",
+    "createdAt": "2026-09-28T20:02:54.736Z",
+    "updatedAt": "2026-09-28T20:02:54.736Z"
+  },
+  {
+    "userId": "c6703673-7690-4a2b-a956-453bc8b4abc7",
+    "refreshTokenHash": "241777c81b9396afa6b5bcd8cb6c122ce4d6866b3ca1b18c00a8fc2f821a7e82",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T20:09:44.431Z",
+    "id": "546201fa-c9cf-492f-9797-c6f211e92943",
+    "createdAt": "2026-09-28T20:09:44.431Z",
+    "updatedAt": "2026-09-28T20:09:44.431Z"
+  },
+  {
+    "userId": "c6703673-7690-4a2b-a956-453bc8b4abc7",
+    "refreshTokenHash": "7e9b67e4b3183ce430268d7226b858ccf79748563bad710e0174520ca3d778f5",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T20:10:11.021Z",
+    "id": "f404cf30-7230-490d-8368-866bb988df60",
+    "createdAt": "2026-09-28T20:10:11.021Z",
+    "updatedAt": "2026-09-28T20:10:11.021Z"
+  },
+  {
+    "userId": "e509b0fa-c375-494d-8224-3e8422aba096",
+    "refreshTokenHash": "e69c55fa85324ece47ab8f3a2624082077b91ebe8db50d956c76b5e452831c08",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T20:10:11.226Z",
+    "id": "f68f7f65-a11f-42d0-b027-25862bef64fc",
+    "createdAt": "2026-09-28T20:10:11.226Z",
+    "updatedAt": "2026-09-28T21:09:02.741Z",
+    "isRevoked": true
+  },
+  {
+    "userId": "c6703673-7690-4a2b-a956-453bc8b4abc7",
+    "refreshTokenHash": "35509d85213ebf2040fd8bc8a1e875e836a6fc9330f5e75b5f7648dde08850cd",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T20:17:06.122Z",
+    "id": "96d11452-dc1d-4467-86ca-a21dc5d69caa",
+    "createdAt": "2026-09-28T20:17:06.123Z",
+    "updatedAt": "2026-09-28T20:17:06.123Z"
+  },
+  {
+    "userId": "e509b0fa-c375-494d-8224-3e8422aba096",
+    "refreshTokenHash": "885fc6ba5b5def64a17e9bf9901fd17109e480f6edfb0db5bb599a491f9622de",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T20:17:06.842Z",
+    "id": "d231a365-55e7-4e5a-bbda-546254e1e117",
+    "createdAt": "2026-09-28T20:17:06.842Z",
+    "updatedAt": "2026-09-28T21:09:02.741Z",
+    "isRevoked": true
+  },
+  {
+    "userId": "c6703673-7690-4a2b-a956-453bc8b4abc7",
+    "refreshTokenHash": "75a08958a26f9a578356ff7807033736ce7a3ff485b6c1a0d2ebbbb605f9dd1f",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T20:22:10.266Z",
+    "id": "5eb50034-bf1d-4e19-a420-a94a04470588",
+    "createdAt": "2026-09-28T20:22:10.267Z",
+    "updatedAt": "2026-09-28T20:22:10.267Z"
+  },
+  {
+    "userId": "e509b0fa-c375-494d-8224-3e8422aba096",
+    "refreshTokenHash": "97eae56913355c9e24918d3fce6349c942778eb6e5d2b5498c714f2ee17f088c",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T20:22:10.838Z",
+    "id": "fe86f993-c3b0-46c1-ad8f-d1253ca73d19",
+    "createdAt": "2026-09-28T20:22:10.838Z",
+    "updatedAt": "2026-09-28T21:09:02.741Z",
+    "isRevoked": true
+  },
+  {
+    "userId": "873ec113-8f72-4e5a-8b91-77f0f48e3d1a",
+    "refreshTokenHash": "8d5070a140075b4e939919260dfef911b8d7e461ebb12dec00febe0206a6f9e7",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T20:32:34.566Z",
+    "id": "985faae9-5e46-4377-a1a1-00c81e30ed17",
+    "createdAt": "2026-09-28T20:32:34.566Z",
+    "updatedAt": "2026-09-28T20:32:34.566Z"
+  },
+  {
+    "userId": "873ec113-8f72-4e5a-8b91-77f0f48e3d1a",
+    "refreshTokenHash": "3424b08a60e36e799f65d6c9e2ca96553503e19bee1d22d05a1df325721a6304",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T20:33:44.785Z",
+    "id": "8a8f41b9-048d-4c54-a7da-c7007b8f83e9",
+    "createdAt": "2026-09-28T20:33:44.785Z",
+    "updatedAt": "2026-09-28T20:33:44.785Z"
+  },
+  {
+    "userId": "873ec113-8f72-4e5a-8b91-77f0f48e3d1a",
+    "refreshTokenHash": "93d655db4c03520fb3f94381f9eb64e7a166bf0e975d78c33d9f41599d67c502",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T20:34:31.313Z",
+    "id": "e6a5b21d-7e5f-489e-9f29-cc5f2d2b7ed6",
+    "createdAt": "2026-09-28T20:34:31.313Z",
+    "updatedAt": "2026-09-28T20:34:31.313Z"
+  },
+  {
+    "userId": "873ec113-8f72-4e5a-8b91-77f0f48e3d1a",
+    "refreshTokenHash": "c67794eb4bbebee2bd269b0ff36d5eb6683a2716c322729c3761314a8f5c0ff0",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T20:38:54.905Z",
+    "id": "309a001a-5cb6-4cd2-946a-99d92e160f47",
+    "createdAt": "2026-09-28T20:38:54.909Z",
+    "updatedAt": "2026-09-28T20:38:54.909Z"
+  },
+  {
+    "userId": "c6703673-7690-4a2b-a956-453bc8b4abc7",
+    "refreshTokenHash": "5e0897f1d02b6329bd8ecf497ae640547e84f9c338e29d107b526a297e1a3532",
+    "userAgent": "node",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T20:57:20.853Z",
+    "id": "3a4eb38d-ae69-4ca9-8095-f29079824467",
+    "createdAt": "2026-09-28T20:57:20.853Z",
+    "updatedAt": "2026-09-28T20:57:20.853Z"
+  },
+  {
+    "userId": "873ec113-8f72-4e5a-8b91-77f0f48e3d1a",
+    "refreshTokenHash": "bb83bad2ae538684fe66892622806009218310287bb462875a708e21e23fb72f",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T21:07:48.792Z",
+    "id": "1c75a0da-d73e-4d1e-8bb6-289da1fbc6da",
+    "createdAt": "2026-09-28T21:07:48.793Z",
+    "updatedAt": "2026-09-28T21:07:48.793Z"
+  },
+  {
+    "userId": "873ec113-8f72-4e5a-8b91-77f0f48e3d1a",
+    "refreshTokenHash": "3f255026f75fa50c5b519423c3a751ddd746f15f630caae8f0268350690a899e",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T21:07:53.690Z",
+    "id": "e0d45c8b-1b5d-4100-896a-675df7af15f2",
+    "createdAt": "2026-09-28T21:07:53.690Z",
+    "updatedAt": "2026-09-28T21:07:53.690Z"
+  },
+  {
+    "userId": "873ec113-8f72-4e5a-8b91-77f0f48e3d1a",
+    "refreshTokenHash": "2ee37f26628373fdd6576bcfd5739657a7b9fbe0a7bbba7b8d5cae7ba76c0c5a",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-05T21:07:55.272Z",
+    "id": "0d1b3eab-d7f1-484d-a552-843494707437",
+    "createdAt": "2026-09-28T21:07:55.272Z",
+    "updatedAt": "2026-09-28T21:07:55.272Z"
+  },
+  {
+    "userId": "873ec113-8f72-4e5a-8b91-77f0f48e3d1a",
+    "refreshTokenHash": "09739e0baab6b25492fff9c9e3725b5b46b7caa1e94b7af8577f0c3334ae9093",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-06T04:28:54.714Z",
+    "id": "7e3dd235-3eb1-4f07-bff1-c7848cfc5a5a",
+    "createdAt": "2026-09-29T04:28:54.715Z",
+    "updatedAt": "2026-09-29T04:28:54.715Z"
+  },
+  {
+    "userId": "873ec113-8f72-4e5a-8b91-77f0f48e3d1a",
+    "refreshTokenHash": "c3478eedbeeba6ed1a1d61c968a64d9f2fae16aaa1b75dcbcd87090434e6bde2",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-06T04:29:09.684Z",
+    "id": "e5acd0c1-c287-42f9-9be4-399ec84368e5",
+    "createdAt": "2026-09-29T04:29:09.684Z",
+    "updatedAt": "2026-09-29T04:29:09.684Z"
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "strict": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@netra-shakti/shared-types": ["packages/shared-types/src"],
+      "@netra-shakti/crypto": ["packages/crypto/src"],
+      "@netra-shakti/watermark": ["packages/watermark/src"],
+      "@netra-shakti/ledger": ["packages/ledger/src"],
+      "@netra-shakti/database": ["packages/database/src"],
+      "@netra-shakti/config": ["packages/config/src"],
+      "pdf-lib": ["packages/watermark/node_modules/pdf-lib"],
+      "@pdf-lib/*": ["packages/watermark/node_modules/@pdf-lib/*"]
+    }
+  }
+}
