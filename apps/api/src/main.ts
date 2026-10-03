@@ -27,7 +27,7 @@ async function bootstrap() {
 
   // CORS
   app.enableCors({
-    origin: [appConfig.APP_URL, 'http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001'],
+    origin: true,
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'X-Request-ID', 'X-Device-Fingerprint']
@@ -49,7 +49,7 @@ async function bootstrap() {
   app.useGlobalInterceptors(new TransformInterceptor());
   app.useGlobalFilters(new HttpExceptionFilter());
 
-  const port = appConfig.PORT || 4000;
+  const port = Number(process.env.PORT) || appConfig.PORT || 4000;
 
   // OpenAPI Swagger Documentation
   try {
@@ -65,13 +65,13 @@ async function bootstrap() {
 
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('api/docs', app, document);
-    logger.log(`Swagger OpenAPI Documentation -> http://localhost:${port}/api/docs`);
+    logger.log(`Swagger OpenAPI Documentation -> http://0.0.0.0:${port}/api/docs`);
   } catch (err) {
     logger.warn(`Swagger documentation initialized in offline schema mode: ${(err as Error).message}`);
   }
 
-  await app.listen(port);
-  logger.log(`NETRA SHAKTI API running on port ${port} -> http://localhost:${port}/api/v1`);
+  await app.listen(port, '0.0.0.0');
+  logger.log(`NETRA SHAKTI API running on port ${port} -> http://0.0.0.0:${port}/api/v1`);
 }
 
 bootstrap();
