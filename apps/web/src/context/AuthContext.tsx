@@ -9,6 +9,7 @@ interface AuthContextType {
   user: IUser | null;
   loading: boolean;
   login: (username: string, password: string) => Promise<any>;
+  register: (payload: any) => Promise<any>;
   logout: () => Promise<void>;
   refreshUser: () => Promise<void>;
   hasRole: (...roles: UserRole[]) => boolean;
@@ -51,6 +52,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return result;
   };
 
+  const register = async (payload: any) => {
+    return api.post('/auth/register', payload);
+  };
+
   const logout = async () => {
     try {
       await api.post('/auth/logout');
@@ -70,7 +75,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, logout, refreshUser, hasRole }}>
+    <AuthContext.Provider value={{ user, loading, login, register, logout, refreshUser, hasRole }}>
       {children}
     </AuthContext.Provider>
   );

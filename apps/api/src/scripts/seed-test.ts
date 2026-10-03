@@ -100,19 +100,19 @@ async function seedTest() {
   }
 
   // 1. Create Super Admin
-  const adminPass = await defaultCryptoService.hashPassword('Admin@Netra2026!');
+  const adminPass = await defaultCryptoService.hashPassword('Netra@Shakti2026!Defence');
   const admin = await prisma.user.upsert({
-    where: { username: 'commander.rawat' },
+    where: { username: 'netra.admin' },
     update: {},
     create: {
-      username: 'commander.rawat',
-      email: 'commander.rawat@defense.netrashakti.gov',
-      displayName: 'Gen. B. Rawat (Strategic Command)',
+      username: 'netra.admin',
+      email: 'admin@defence.netrashakti.gov',
+      displayName: 'National Cyber Security Director',
       passwordHash: adminPass,
       role: UserRole.SUPER_ADMIN,
-      department: 'STRATEGIC_COMMAND',
-      rank: 'General',
-      unit: 'HQ Defense Forces',
+      department: 'DEFENCE_CYBER_COMMAND',
+      rank: 'Director General',
+      unit: 'HQ Strategic Cyber Command',
       clearanceLevel: ClearanceLevel.TOP_SECRET,
       status: UserStatus.ACTIVE
     }
@@ -121,15 +121,15 @@ async function seedTest() {
   // 2. Create Sender
   const senderPass = await defaultCryptoService.hashPassword('Sender@Netra2026!');
   const sender = await prisma.user.upsert({
-    where: { username: 'col.sharma' },
+    where: { username: 'sender.officer' },
     update: {},
     create: {
-      username: 'col.sharma',
-      email: 'col.sharma@intel.netrashakti.gov',
-      displayName: 'Col. Vikram Sharma',
+      username: 'sender.officer',
+      email: 'sender@defence.netrashakti.gov',
+      displayName: 'Defence Intelligence Operations Officer',
       passwordHash: senderPass,
       role: UserRole.SENDER,
-      department: 'DEFENSE_INTELLIGENCE_AGENCY',
+      department: 'DEFENCE_INTELLIGENCE_AGENCY',
       rank: 'Colonel',
       unit: 'Special Operations Directorate',
       clearanceLevel: ClearanceLevel.TOP_SECRET,
@@ -140,15 +140,15 @@ async function seedTest() {
   // 3. Create Recipient
   const recipientPass = await defaultCryptoService.hashPassword('Recipient@Netra2026!');
   const recipient = await prisma.user.upsert({
-    where: { username: 'maj.verma' },
+    where: { username: 'recipient.officer' },
     update: {},
     create: {
-      username: 'maj.verma',
-      email: 'maj.verma@iaf.netrashakti.gov',
-      displayName: 'Maj. Aryan Verma',
+      username: 'recipient.officer',
+      email: 'recipient@defence.netrashakti.gov',
+      displayName: 'Authorized Field Recipient Officer',
       passwordHash: recipientPass,
       role: UserRole.RECIPIENT,
-      department: 'AIR_FORCE_INTELLIGENCE',
+      department: 'AIR_DEFENCE_INTELLIGENCE',
       rank: 'Major',
       unit: 'Electronic Warfare Wing',
       clearanceLevel: ClearanceLevel.SECRET,
@@ -159,12 +159,12 @@ async function seedTest() {
   // 4. Create Investigator
   const investigatorPass = await defaultCryptoService.hashPassword('Investigator@Netra2026!');
   const investigator = await prisma.user.upsert({
-    where: { username: 'capt.singh' },
+    where: { username: 'investigator.officer' },
     update: {},
     create: {
-      username: 'capt.singh',
-      email: 'capt.singh@cyber.netrashakti.gov',
-      displayName: 'Capt. Ananya Singh',
+      username: 'investigator.officer',
+      email: 'investigator@defence.netrashakti.gov',
+      displayName: 'Digital Forensics Principal Investigator',
       passwordHash: investigatorPass,
       role: UserRole.INVESTIGATOR,
       department: 'CYBER_FORENSIC_DIRECTORATE',
@@ -452,10 +452,10 @@ async function seedTest() {
   console.log('====================================================');
   console.log('TEST SEED COMPLETED SUCCESSFULLY!');
   console.log('Credentials:');
-  console.log('  SUPER ADMIN:   commander.rawat   / Admin@Netra2026!');
-  console.log('  SENDER:        col.sharma        / Sender@Netra2026!');
-  console.log('  RECIPIENT:     maj.verma         / Recipient@Netra2026!');
-  console.log('  INVESTIGATOR:  capt.singh        / Investigator@Netra2026!');
+  console.log('  SUPER ADMIN:   netra.admin          / Netra@Shakti2026!Defence');
+  console.log('  SENDER:        sender.officer       / Sender@Netra2026!');
+  console.log('  RECIPIENT:     recipient.officer    / Recipient@Netra2026!');
+  console.log('  INVESTIGATOR:  investigator.officer / Investigator@Netra2026!');
   console.log('====================================================');
 }
 

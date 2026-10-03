@@ -6,5 +6,29 @@
     "id": "25945656-72cc-46df-9117-2e49e226c3ca",
     "createdAt": "2026-09-28T19:18:27.784Z",
     "updatedAt": "2026-09-28T19:36:11.332Z"
+  },
+  {
+    "key": "KEY_WRAP_13d83aef-c2f3-4f38-8ba4-9eaf1823a11e",
+    "value": "{\"wrappedKey\":\"d373aa4c81c50cdc24778b92b118aae7e9655e3aa93ec09a2c5da341c9031fe2\",\"iv\":\"3527fec5a0878daa183801fb\",\"authTag\":\"ed2be028d5975107d5020111a134d58e\",\"keyVersion\":1}",
+    "description": "Wrapped AES-256 key for document 13d83aef-c2f3-4f38-8ba4-9eaf1823a11e",
+    "id": "637181b2-8894-4a96-989a-d19ef08798b3",
+    "createdAt": "2026-10-03T09:04:07.441Z",
+    "updatedAt": "2026-10-03T09:04:07.441Z"
+  },
+  {
+    "key": "KEY_WRAP_8d1ae43e-10be-4624-9953-2807a2364061",
+    "value": "{\"wrappedKey\":\"db1a768a0875b148956e0af6e471511aa76dd46cc3bcbd5db72dc424023f1c61\",\"iv\":\"c075c916b740076621f14fa3\",\"authTag\":\"358ca0828604e824664393d84c222c0d\",\"keyVersion\":1}",
+    "description": "Wrapped AES-256 key for document 8d1ae43e-10be-4624-9953-2807a2364061",
+    "id": "fe536ee5-140a-43f4-9b17-35994c0cf0ed",
+    "createdAt": "2026-10-03T09:05:09.074Z",
+    "updatedAt": "2026-10-03T09:05:09.074Z"
+  },
+  {
+    "key": "KEY_WRAP_d59250ae-2f87-4e41-9a4f-ff65aaa65a7f",
+    "value": "{\"wrappedKey\":\"487c3cf580ab89bcc36a3f38492e1c0c4208435b67d27ceb304f376a64c69ce6\",\"iv\":\"4186a5b5ec2525022a8db27a\",\"authTag\":\"995c2349f9f0dd12d1e57d33fe7e7507\",\"keyVersion\":1}",
+    "description": "Wrapped AES-256 key for document d59250ae-2f87-4e41-9a4f-ff65aaa65a7f",
+    "id": "7cac179e-14ae-4540-a289-ac832f8bae68",
+    "createdAt": "2026-10-03T09:05:52.591Z",
+    "updatedAt": "2026-10-03T09:05:52.591Z"
   }
 ]

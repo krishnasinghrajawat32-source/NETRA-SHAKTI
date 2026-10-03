@@ -14,8 +14,8 @@ export class AuthService {
   private _audit: AuditService | null = null;
 
   constructor(
-    @Optional() @Inject(JwtService) private readonly jwtService?: JwtService,
-    @Optional() @Inject(AuditService) private readonly auditService?: AuditService
+    private readonly jwtService?: JwtService,
+    private readonly auditService?: AuditService
   ) {}
 
   private get jwt(): JwtService {
@@ -242,5 +242,95 @@ export class AuthService {
     });
 
     return { message: 'Password changed successfully' };
+  }
+
+  async register(data: {
+    username: string;
+    email: string;
+    password: string;
+    displayName: string;
+    department?: string;
+    rank?: string;
+    unit?: string;
+    clearanceLevel?: any;
+    ipAddress?: string;
+    userAgent?: string;
+  }) {
+    const { username, email, password, displayName, department, rank, unit, clearanceLevel, ipAddress, userAgent } = data;
+
+    if (!username || !email || !password || !displayName) {
+      throw new BadRequestException('Username, email, password, and display name are required');
+    }
+
+    if (password.length < 8) {
+      throw new BadRequestException('Password must be at least 8 characters long with strong entropy');
+    }
+
+    const trimmedUsername = username.trim().toLowerCase();
+    const trimmedEmail = email.trim().toLowerCase();
+
+    // Check if user already exists in database
+    const existing = await prisma.user.findFirst({
+      where: {
+        OR: [{ username: trimmedUsername }, { email: trimmedEmail }]
+      }
+    });
+
+    if (existing) {
+      throw new BadRequestException('Username or official email is already registered in DEFENCE registry');
+    }
+
+    // Hash password with Argon2id
+    const passwordHash = await defaultCryptoService.hashPassword(password);
+
+    // Save Real User in database with default safe USER role (Never allow ADMIN/SUPER_ADMIN via public registration)
+    const user = await prisma.user.create({
+      data: {
+        username: trimmedUsername,
+        email: trimmedEmail,
+        displayName: displayName.trim(),
+        passwordHash,
+        role: UserRole.USER || ('USER' as any),
+        department: department?.trim() || 'DEFENCE_CYBER_COMMAND',
+        rank: rank?.trim() || null,
+        unit: unit?.trim() || null,
+        clearanceLevel: clearanceLevel || ('CONFIDENTIAL' as any),
+        status: UserStatus.ACTIVE
+      }
+    });
+
+    // Generate asymmetric crypto identity for the registered user
+    try {
+      const signingKeys = defaultCryptoService.generateSigningKeyPair();
+      const encryptionKeys = defaultCryptoService.generateEncryptionKeyPair();
+
+      await prisma.cryptoIdentity.create({
+        data: {
+          userId: user.id,
+          signingPublicKey: signingKeys.publicKey,
+          encryptionPublicKey: encryptionKeys.publicKey,
+          algorithm: 'Ed25519+RSA-4096-OAEP',
+          keyVersion: 1,
+          status: 'ACTIVE'
+        }
+      });
+    } catch (keyErr) {
+      this.logger.warn(`Crypto identity generation warning: ${(keyErr as Error).message}`);
+    }
+
+    await this.audit.log({
+      eventType: AuditEventType.USER_CREATED,
+      userId: user.id,
+      action: `New personnel registered: ${user.username} (${user.email})`,
+      ipAddress,
+      userAgent,
+      status: 'SUCCESS'
+    });
+
+    const { passwordHash: _, ...safeUser } = user;
+    return {
+      message: 'Account successfully registered. You may now log in.',
+      user: safeUser
+    };
   }
 }

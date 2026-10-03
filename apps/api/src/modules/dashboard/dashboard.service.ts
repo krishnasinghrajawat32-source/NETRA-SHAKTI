@@ -8,7 +8,7 @@ export class DashboardService {
   private _health: HealthService | null = null;
 
   constructor(
-    @Optional() @Inject(HealthService) private readonly healthService?: HealthService
+    private readonly healthService?: HealthService
   ) {}
 
   private get health(): HealthService {

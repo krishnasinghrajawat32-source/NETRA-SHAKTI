@@ -9,9 +9,9 @@ import { ISystemHealth } from '@netra-shakti/shared-types';
 @Injectable()
 export class HealthService {
   constructor(
-    @Optional() private readonly storageService?: StorageService,
-    @Optional() private readonly ledgerService?: LedgerService,
-    @Optional() private readonly mlService?: MLService
+    private readonly storageService?: StorageService,
+    private readonly ledgerService?: LedgerService,
+    private readonly mlService?: MLService
   ) {}
 
   async getSystemHealth(): Promise<ISystemHealth> {

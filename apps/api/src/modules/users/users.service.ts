@@ -34,8 +34,8 @@ export class UsersService {
   private _audit: AuditService | null = null;
 
   constructor(
-    @Optional() @Inject(CryptoService) private readonly cryptoService?: CryptoService,
-    @Optional() @Inject(AuditService) private readonly auditService?: AuditService
+    private readonly cryptoService?: CryptoService,
+    private readonly auditService?: AuditService
   ) {}
 
   private get crypto(): CryptoService {

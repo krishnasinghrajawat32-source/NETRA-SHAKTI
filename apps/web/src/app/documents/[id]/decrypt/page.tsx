@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import { Header } from '@/components/layout/Header';
 import { Sidebar } from '@/components/layout/Sidebar';
+import { PdfViewer } from '@/components/PdfViewer';
 import { api } from '@/lib/api';
 import {
   IDocument,
@@ -294,13 +295,13 @@ export default function SecureDecryptionWorkflowPage() {
                 </div>
 
                 {pdfUrl ? (
-                  <div className="w-full h-[650px] bg-cyber-surface border border-cyber-border rounded overflow-hidden">
-                    <iframe
-                      src={pdfUrl}
-                      className="w-full h-full border-0"
-                      title="Issued Confidential Document"
-                    />
-                  </div>
+                  <PdfViewer
+                    sessionId={session.id}
+                    streamUrl={pdfUrl}
+                    title={document?.title || `NETRA_${document?.documentCode}`}
+                    classification={document?.classification}
+                    allowDownload={document?.policies?.allowDownload}
+                  />
                 ) : (
                   <div className="p-12 text-center text-xs font-mono text-gray-400">
                     Loading secure document stream...

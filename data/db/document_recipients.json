@@ -8,5 +8,47 @@
     "id": "2a77ae6f-bec1-43ba-aa14-921592282009",
     "createdAt": "2026-09-28T19:18:27.789Z",
     "updatedAt": "2026-09-28T19:36:11.336Z"
+  },
+  {
+    "documentId": "13d83aef-c2f3-4f38-8ba4-9eaf1823a11e",
+    "recipientId": "fa915243-243b-4a62-9954-d98b2bdba438",
+    "assignedById": "c784fa3c-424f-41bd-94c5-2640323e88e8",
+    "status": "ACCESSED",
+    "expiresAt": null,
+    "policyId": "a91dda56-1d7c-4282-bca8-24a21a14c473",
+    "id": "b676e7ff-e8dd-404d-8de5-7ab62e09c854",
+    "createdAt": "2026-10-03T09:04:08.302Z",
+    "updatedAt": "2026-10-03T09:04:08.722Z",
+    "accessCount": {
+      "increment": 1
+    }
+  },
+  {
+    "documentId": "8d1ae43e-10be-4624-9953-2807a2364061",
+    "recipientId": "bd216dcc-0fc6-406f-9246-63af093f3d38",
+    "assignedById": "06406d13-6eb3-4511-8bda-0a85c71f9963",
+    "status": "ACCESSED",
+    "expiresAt": null,
+    "policyId": "5d6be110-3204-47ca-8134-a9438421577f",
+    "id": "93507a5b-da21-49e2-a4b8-fa21c26e80f0",
+    "createdAt": "2026-10-03T09:05:11.126Z",
+    "updatedAt": "2026-10-03T09:05:11.460Z",
+    "accessCount": {
+      "increment": 1
+    }
+  },
+  {
+    "documentId": "d59250ae-2f87-4e41-9a4f-ff65aaa65a7f",
+    "recipientId": "dfe2f95b-365c-42db-90f2-1f07cc9b5050",
+    "assignedById": "04ab884f-6a1d-4205-a0cd-c2b6ee6ee285",
+    "status": "ACCESSED",
+    "expiresAt": null,
+    "policyId": "62fbfbbc-02bf-43b6-b8f6-329ed27096a7",
+    "id": "e9c694de-b78d-4e45-ad20-8439c71f572e",
+    "createdAt": "2026-10-03T09:05:53.621Z",
+    "updatedAt": "2026-10-03T09:05:53.881Z",
+    "accessCount": {
+      "increment": 1
+    }
   }
 ]

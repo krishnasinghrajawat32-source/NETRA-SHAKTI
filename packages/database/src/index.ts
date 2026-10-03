@@ -329,6 +329,7 @@ class NetraDatabaseEngine {
   public watermark = new MemoryRepository<any>('watermarks');
   public digitalSignature = new MemoryRepository<any>('digital_signatures');
   public ledgerEvent = new MemoryRepository<any>('ledger_events');
+  public ledgerCheckpoint = new MemoryRepository<any>('ledger_checkpoints');
   public investigation = new MemoryRepository<any>('investigations');
   public investigationEvidence = new MemoryRepository<any>('investigation_evidence');
   public investigationFinding = new MemoryRepository<any>('investigation_findings');
