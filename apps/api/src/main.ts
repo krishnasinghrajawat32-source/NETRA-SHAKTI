@@ -70,6 +70,19 @@ async function bootstrap() {
     logger.warn(`Swagger documentation initialized in offline schema mode: ${(err as Error).message}`);
   }
 
+  try {
+    const { prisma } = require('@netra-shakti/database');
+    const userCount = await prisma.user.count();
+    if (userCount === 0) {
+      logger.log('Empty database detected. Auto-seeding initial defense personnel & admin...');
+      const { seedTest } = require('./scripts/seed-test');
+      await seedTest();
+      logger.log('Database successfully seeded with default personnel.');
+    }
+  } catch (err) {
+    logger.warn(`Auto-seed note: ${(err as Error).message}`);
+  }
+
   await app.listen(port, '0.0.0.0');
   logger.log(`NETRA SHAKTI API running on port ${port} -> http://0.0.0.0:${port}/api/v1`);
 }
