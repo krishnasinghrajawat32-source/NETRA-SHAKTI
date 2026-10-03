@@ -4,6 +4,8 @@
     "module": "CommonJS",
     "moduleResolution": "Node",
     "strict": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,

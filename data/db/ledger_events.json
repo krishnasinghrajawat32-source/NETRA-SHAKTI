@@ -40,5 +40,47 @@
     "createdAt": "2026-09-28T19:36:11.453Z",
     "id": "f0f6326b-befb-46d1-ac6c-761762c80dc0",
     "updatedAt": "2026-09-28T19:36:11.453Z"
+  },
+  {
+    "sequenceNumber": 4,
+    "eventType": "DOCUMENT_DECRYPTED_AND_ISSUED",
+    "entityType": "DECRYPTION_SESSION",
+    "entityId": "7cea7316-08d7-4c7e-a31b-8626479c143e",
+    "payloadHash": "601545b79738e1f9f3db2e36b2332444adada18cb2141c5bb5073a779b8c18d8",
+    "previousHash": "e87ffbc93f95e61d4594b789250f6993256af813c5170ac79d45a6be2d900e2c",
+    "eventHash": "87916464a3a6bcd5bd6c50a457db7b9fe6a960d5ecaf855722977d8dd260938a",
+    "signature": "43de2580a1a0d892894ec43737b45a167a02858eea44d31cff7d62ce6e49064b",
+    "actorId": "fa915243-243b-4a62-9954-d98b2bdba438",
+    "createdAt": "2026-10-03T09:04:08.646Z",
+    "id": "360c2e9d-3d89-422c-b1f1-f950e0ed4bba",
+    "updatedAt": "2026-10-03T09:04:08.646Z"
+  },
+  {
+    "sequenceNumber": 5,
+    "eventType": "DOCUMENT_DECRYPTED_AND_ISSUED",
+    "entityType": "DECRYPTION_SESSION",
+    "entityId": "5de8ff29-a621-41d2-acd1-392f101f4a07",
+    "payloadHash": "4e8d837d77142c5ed48a41bb916d1c7672f01940d7a875cf8bf301122f53ab53",
+    "previousHash": "87916464a3a6bcd5bd6c50a457db7b9fe6a960d5ecaf855722977d8dd260938a",
+    "eventHash": "fe38aad94970eb0c8bdebcf3c3a0c140513ff94b0708cc598ce2c128f2c56d19",
+    "signature": "2bc8bece5e233d0cea9c89216022cd6586230e96ffc49716ac08cc8d6f403879",
+    "actorId": "bd216dcc-0fc6-406f-9246-63af093f3d38",
+    "createdAt": "2026-10-03T09:05:11.421Z",
+    "id": "ad132e4f-be4c-4840-986a-e2f3a2870b3f",
+    "updatedAt": "2026-10-03T09:05:11.422Z"
+  },
+  {
+    "sequenceNumber": 6,
+    "eventType": "DOCUMENT_DECRYPTED_AND_ISSUED",
+    "entityType": "DECRYPTION_SESSION",
+    "entityId": "4bab788a-7d6c-4e73-a3ba-070112b83d8a",
+    "payloadHash": "85d16e65992659bd32af705ded8fe5fc5646347be4f7cf2712c7923a27970ae5",
+    "previousHash": "fe38aad94970eb0c8bdebcf3c3a0c140513ff94b0708cc598ce2c128f2c56d19",
+    "eventHash": "52c5e4e419c5b1bc13e4c9b701d94915e77934aa142b0f0eba567ef36d698c43",
+    "signature": "967131343c7a4b43c346bf075151adc812e96ae00f7154caa4b5684d647541c8",
+    "actorId": "dfe2f95b-365c-42db-90f2-1f07cc9b5050",
+    "createdAt": "2026-10-03T09:05:53.858Z",
+    "id": "efbbfdf4-8672-49b0-8ed5-d2cb0f515b90",
+    "updatedAt": "2026-10-03T09:05:53.859Z"
   }
 ]

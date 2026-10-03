@@ -33,11 +33,11 @@ export class InvestigationsService {
   private _audit: AuditService | null = null;
 
   constructor(
-    @Optional() @Inject(StorageService) private readonly storageService?: StorageService,
-    @Optional() @Inject(WatermarkService) private readonly watermarkService?: WatermarkService,
-    @Optional() @Inject(LedgerService) private readonly ledgerService?: LedgerService,
-    @Optional() @Inject(MLService) private readonly mlService?: MLService,
-    @Optional() @Inject(AuditService) private readonly auditService?: AuditService
+    private readonly storageService?: StorageService,
+    private readonly watermarkService?: WatermarkService,
+    private readonly ledgerService?: LedgerService,
+    private readonly mlService?: MLService,
+    private readonly auditService?: AuditService
   ) {}
 
   private get storage(): StorageService {

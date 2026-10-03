@@ -1,0 +1,92 @@
+[
+  {
+    "userId": "cd7a4273-32fa-4f4f-8d63-32ca4b995d43",
+    "refreshTokenHash": "27a5870157a7a605811e5ff1965bc7dc63bec49bbfc48012929f1f25ba31cbad",
+    "userAgent": null,
+    "ipAddress": null,
+    "expiresAt": "2026-10-10T09:01:38.070Z",
+    "id": "22263853-9946-4d9b-993a-4e73f0ff72a5",
+    "createdAt": "2026-10-03T09:01:38.070Z",
+    "updatedAt": "2026-10-03T09:01:38.070Z"
+  },
+  {
+    "userId": "43d61d7b-cf4b-43a9-9545-cd78c8a7deb3",
+    "refreshTokenHash": "6f1d6f0f33443483d88ddc51a498ba24b37a34a7785ec2370e174fee87a650e5",
+    "userAgent": null,
+    "ipAddress": null,
+    "expiresAt": "2026-10-10T09:01:41.455Z",
+    "id": "6cb78e1c-d305-4eee-9b14-a68272af5a1c",
+    "createdAt": "2026-10-03T09:01:41.455Z",
+    "updatedAt": "2026-10-03T09:01:41.455Z"
+  },
+  {
+    "userId": "c784fa3c-424f-41bd-94c5-2640323e88e8",
+    "refreshTokenHash": "e1d7292a46904379ea09e1ce2f47297863e1d8047d8ad6d3d85682a49fc3fa5d",
+    "userAgent": null,
+    "ipAddress": null,
+    "expiresAt": "2026-10-10T09:04:07.351Z",
+    "id": "42786eb5-51a4-45b8-a5d1-320ab07fb2d7",
+    "createdAt": "2026-10-03T09:04:07.351Z",
+    "updatedAt": "2026-10-03T09:04:07.351Z"
+  },
+  {
+    "userId": "fa915243-243b-4a62-9954-d98b2bdba438",
+    "refreshTokenHash": "ec7a58b276767a9e49570f71af86fd77c9d17bae417c8b49341f7555c65f53dd",
+    "userAgent": null,
+    "ipAddress": null,
+    "expiresAt": "2026-10-10T09:04:08.523Z",
+    "id": "a59f0635-48d9-44aa-87b0-afa35e326777",
+    "createdAt": "2026-10-03T09:04:08.523Z",
+    "updatedAt": "2026-10-03T09:04:08.523Z"
+  },
+  {
+    "userId": "06406d13-6eb3-4511-8bda-0a85c71f9963",
+    "refreshTokenHash": "d457140974f1174b645ea658f018d9e50c098ac6eaa648bd18b39f4e9a6d9ed7",
+    "userAgent": null,
+    "ipAddress": null,
+    "expiresAt": "2026-10-10T09:05:08.953Z",
+    "id": "ad72cc68-698d-4d5d-9c47-98b85ce61ee7",
+    "createdAt": "2026-10-03T09:05:08.953Z",
+    "updatedAt": "2026-10-03T09:05:08.953Z"
+  },
+  {
+    "userId": "bd216dcc-0fc6-406f-9246-63af093f3d38",
+    "refreshTokenHash": "883cb1a26651644f2fe69012bc723a8c378d37e2e89d907c474cadfb9effd8fc",
+    "userAgent": null,
+    "ipAddress": null,
+    "expiresAt": "2026-10-10T09:05:11.307Z",
+    "id": "557c8f7d-390c-4b95-9749-d5d0304bf92a",
+    "createdAt": "2026-10-03T09:05:11.307Z",
+    "updatedAt": "2026-10-03T09:05:11.307Z"
+  },
+  {
+    "userId": "04ab884f-6a1d-4205-a0cd-c2b6ee6ee285",
+    "refreshTokenHash": "3b0f948f01cf7d1f109a27fcfdd6774836e702eaf23e212f23482ee3e99971b7",
+    "userAgent": null,
+    "ipAddress": null,
+    "expiresAt": "2026-10-10T09:05:52.469Z",
+    "id": "d99775f6-5fe4-45d5-a9d0-6722652c9f1b",
+    "createdAt": "2026-10-03T09:05:52.469Z",
+    "updatedAt": "2026-10-03T09:05:52.469Z"
+  },
+  {
+    "userId": "dfe2f95b-365c-42db-90f2-1f07cc9b5050",
+    "refreshTokenHash": "8adcae691628670ae39e0a880ced93c3ae76ab3de5c565711cfdece9c6f9b57f",
+    "userAgent": null,
+    "ipAddress": null,
+    "expiresAt": "2026-10-10T09:05:53.804Z",
+    "id": "5355dcc9-62e9-4dcd-b275-46d8cda8fb12",
+    "createdAt": "2026-10-03T09:05:53.804Z",
+    "updatedAt": "2026-10-03T09:05:53.804Z"
+  },
+  {
+    "userId": "938457c4-f6f0-44e0-ad15-d7bd51b1603f",
+    "refreshTokenHash": "5811077b580200bc6a94c9b1b3d915494d177dd4f5e08c22b64711fde41adef3",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-10T13:28:17.126Z",
+    "id": "08e625cb-80a6-4bb9-9234-28d78b024cd3",
+    "createdAt": "2026-10-03T13:28:17.126Z",
+    "updatedAt": "2026-10-03T13:28:17.126Z"
+  }
+]

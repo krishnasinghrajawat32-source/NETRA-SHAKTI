@@ -9,8 +9,11 @@ async function bootstrapAdmin() {
     where: { role: UserRole.SUPER_ADMIN }
   });
 
-  if (existingSuperAdmin) {
+  const force = process.argv.includes('--force');
+
+  if (existingSuperAdmin && !force) {
     console.log(`[INFO] Super Admin already exists: ${existingSuperAdmin.username} (${existingSuperAdmin.email})`);
+    console.log('[INFO] Use --force flag if you wish to reset the SUPER_ADMIN credentials.');
     return;
   }
 
@@ -20,17 +23,17 @@ async function bootstrapAdmin() {
 
   const passwordHash = await defaultCryptoService.hashPassword(initialPassword);
 
-  if (existingSuperAdmin) {
-    console.log(`[INFO] Super Admin already exists: ${existingSuperAdmin.username} (${existingSuperAdmin.email})`);
-    console.log('[INFO] Updating credentials to ensure administrative access...');
+  if (existingSuperAdmin && force) {
+    console.log(`[INFO] Resetting existing Super Admin credentials: ${existingSuperAdmin.username}...`);
     await prisma.user.update({
       where: { id: existingSuperAdmin.id },
       data: {
         passwordHash,
+        status: UserStatus.ACTIVE,
         department: 'DEFENCE_CYBER_COMMAND'
       }
     });
-    console.log(`SUCCESS: SUPER_ADMIN credentials verified and updated for username: ${existingSuperAdmin.username}`);
+    console.log(`SUCCESS: SUPER_ADMIN credentials reset for username: ${existingSuperAdmin.username}`);
     return;
   }
 

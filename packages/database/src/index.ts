@@ -35,6 +35,23 @@ export namespace Prisma {
   export type TransactionClient = any;
 }
 
+export function resolveCanonicalDataDir(): string {
+  let curr = process.cwd();
+  for (let i = 0; i < 5; i++) {
+    if (fs.existsSync(path.join(curr, 'apps', 'api'))) {
+      const target = path.join(curr, 'data', 'db');
+      if (!fs.existsSync(target)) fs.mkdirSync(target, { recursive: true });
+      return target;
+    }
+    const parent = path.dirname(curr);
+    if (parent === curr) break;
+    curr = parent;
+  }
+  const fallback = path.resolve(process.cwd(), 'data', 'db');
+  if (!fs.existsSync(fallback)) fs.mkdirSync(fallback, { recursive: true });
+  return fallback;
+}
+
 /**
  * NETRA SHAKTI Embedded & Air-Gapped High-Performance Database Engine
  * Zero-dependency ACID repository with full relational query support matching Prisma Client API
@@ -45,10 +62,7 @@ class MemoryRepository<T extends { id: string }> {
 
   constructor(filename?: string) {
     if (filename) {
-      const dataDir = path.resolve(process.cwd(), 'data', 'db');
-      if (!fs.existsSync(dataDir)) {
-        fs.mkdirSync(dataDir, { recursive: true });
-      }
+      const dataDir = resolveCanonicalDataDir();
       this.storageFilePath = path.join(dataDir, `${filename}.json`);
       this.loadFromFile();
     }
@@ -59,6 +73,7 @@ class MemoryRepository<T extends { id: string }> {
       if (this.storageFilePath && fs.existsSync(this.storageFilePath)) {
         const data = fs.readFileSync(this.storageFilePath, 'utf8');
         const parsed: T[] = JSON.parse(data);
+        this.items.clear();
         parsed.forEach(item => this.items.set(item.id, item));
       }
     } catch {
@@ -78,12 +93,14 @@ class MemoryRepository<T extends { id: string }> {
   }
 
   async findUnique(args: { where: any; include?: any; select?: any }): Promise<T | null> {
+    this.loadFromFile();
     const item = Array.from(this.items.values()).find(it => this.matchesFilter(it, args.where));
     if (!item) return null;
     return this.applyIncludeAndSelect(item, args.include, args.select);
   }
 
   async findFirst(args: { where?: any; include?: any; select?: any; orderBy?: any }): Promise<T | null> {
+    this.loadFromFile();
     let list = Array.from(this.items.values());
     if (args.where) {
       list = list.filter(it => this.matchesFilter(it, args.where));
@@ -103,6 +120,7 @@ class MemoryRepository<T extends { id: string }> {
     skip?: number;
     take?: number;
   } = {}): Promise<T[]> {
+    this.loadFromFile();
     let list = Array.from(this.items.values());
     if (args.where) {
       list = list.filter(it => this.matchesFilter(it, args.where));
@@ -233,6 +251,10 @@ class MemoryRepository<T extends { id: string }> {
         } else if (key === 'documentId_recipientId') {
           if (item.documentId !== filterVal.documentId || item.recipientId !== filterVal.recipientId) return false;
         }
+      } else if (typeof itemVal === 'string' && typeof filterVal === 'string' && (key === 'username' || key === 'email' || key === 'displayName')) {
+        const a = itemVal.trim().toLowerCase().replace(/\s+/g, '.');
+        const b = filterVal.trim().toLowerCase().replace(/\s+/g, '.');
+        if (a !== b && itemVal.trim().toLowerCase() !== filterVal.trim().toLowerCase()) return false;
       } else if (itemVal !== filterVal) {
         return false;
       }
@@ -329,6 +351,7 @@ class NetraDatabaseEngine {
   public watermark = new MemoryRepository<any>('watermarks');
   public digitalSignature = new MemoryRepository<any>('digital_signatures');
   public ledgerEvent = new MemoryRepository<any>('ledger_events');
+  public ledgerCheckpoint = new MemoryRepository<any>('ledger_checkpoints');
   public investigation = new MemoryRepository<any>('investigations');
   public investigationEvidence = new MemoryRepository<any>('investigation_evidence');
   public investigationFinding = new MemoryRepository<any>('investigation_findings');

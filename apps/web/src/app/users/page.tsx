@@ -26,7 +26,7 @@ export default function UserManagementPage() {
   const [displayName, setDisplayName] = useState('');
   const [role, setRole] = useState<UserRole>(UserRole.RECIPIENT);
   const [clearanceLevel, setClearanceLevel] = useState<ClearanceLevel>(ClearanceLevel.CONFIDENTIAL);
-  const [department, setDepartment] = useState('DEFENSE_INTEL');
+  const [department, setDepartment] = useState('DEFENCE_CYBER_COMMAND');
   const [rank, setRank] = useState('');
   const [unit, setUnit] = useState('');
   const [creating, setCreating] = useState(false);
@@ -231,7 +231,7 @@ export default function UserManagementPage() {
                         required
                         value={username}
                         onChange={e => setUsername(e.target.value)}
-                        placeholder="e.g. col.sharma"
+                        placeholder="e.g. officer.kumar"
                         className="w-full bg-cyber-surface border border-cyber-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-cyber-cyan font-mono"
                       />
                     </div>
@@ -245,7 +245,7 @@ export default function UserManagementPage() {
                         required
                         value={email}
                         onChange={e => setEmail(e.target.value)}
-                        placeholder="officer@defense.netra.gov"
+                        placeholder="officer@defence.netrashakti.gov"
                         className="w-full bg-cyber-surface border border-cyber-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-cyber-cyan font-mono"
                       />
                     </div>

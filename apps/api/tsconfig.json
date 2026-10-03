@@ -10,16 +10,7 @@
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": ".",
-    "paths": {
-      "@netra-shakti/shared-types": ["../../packages/shared-types/src"],
-      "@netra-shakti/crypto": ["../../packages/crypto/src"],
-      "@netra-shakti/watermark": ["../../packages/watermark/src"],
-      "@netra-shakti/ledger": ["../../packages/ledger/src"],
-      "@netra-shakti/database": ["../../packages/database/src"],
-      "@netra-shakti/config": ["../../packages/config/src"],
-      "pdf-lib": ["../../packages/watermark/node_modules/pdf-lib"],
-      "@pdf-lib/*": ["../../packages/watermark/node_modules/@pdf-lib/*"]
-    },
+    "rootDir": "./src",
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": false,
@@ -28,5 +19,5 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false
   },
-  "include": ["src/**/*", "../../packages/*/src/**/*"]
+  "include": ["src/**/*.ts"]
 }

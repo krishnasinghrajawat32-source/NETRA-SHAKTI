@@ -70,8 +70,10 @@ async function bootstrap() {
     logger.warn(`Swagger documentation initialized in offline schema mode: ${(err as Error).message}`);
   }
 
-  await app.listen(port);
+  await app.listen(port, '0.0.0.0');
   logger.log(`NETRA SHAKTI API running on port ${port} -> http://localhost:${port}/api/v1`);
+  // Ensure event loop stays active indefinitely in background task runners
+  setInterval(() => {}, 1000 * 60 * 60);
 }
 
 bootstrap();

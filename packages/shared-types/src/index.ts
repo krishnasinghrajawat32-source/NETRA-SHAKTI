@@ -5,7 +5,9 @@ export enum UserRole {
   ADMIN = 'ADMIN',
   SENDER = 'SENDER',
   RECIPIENT = 'RECIPIENT',
-  INVESTIGATOR = 'INVESTIGATOR'
+  INVESTIGATOR = 'INVESTIGATOR',
+  USER = 'USER',
+  PENDING_USER = 'PENDING_USER'
 }
 
 export enum ClearanceLevel {

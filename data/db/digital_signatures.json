@@ -10,5 +10,41 @@
     "id": "1511fd02-291b-43ba-b37d-ea64df9e001f",
     "createdAt": "2026-09-28T19:18:27.857Z",
     "updatedAt": "2026-09-28T19:36:11.449Z"
+  },
+  {
+    "sessionId": "7cea7316-08d7-4c7e-a31b-8626479c143e",
+    "signerId": "fa915243-243b-4a62-9954-d98b2bdba438",
+    "algorithm": "Ed25519",
+    "payloadHash": "86cc6b3b92a4062e6346589286aa3f403c6d0c596ec1d928520683b5218477b3",
+    "signature": "9a654894eaac2beb1d469784ce07263587a8825ebae09655ad285768bf169b889d4176f21d122d4bd471a13e3b82c8ca5bb92a10007e04140ab245b677d9fe03",
+    "keyVersion": 1,
+    "verificationStatus": "VERIFIED",
+    "id": "0a60871d-f2c0-4cf5-8b97-5318c918ffaf",
+    "createdAt": "2026-10-03T09:04:08.630Z",
+    "updatedAt": "2026-10-03T09:04:08.630Z"
+  },
+  {
+    "sessionId": "5de8ff29-a621-41d2-acd1-392f101f4a07",
+    "signerId": "bd216dcc-0fc6-406f-9246-63af093f3d38",
+    "algorithm": "Ed25519",
+    "payloadHash": "2f074360311bfb4a1ded812f144cfb49394439bc1d5378d32d51a83542bd75fd",
+    "signature": "0235d9c8313b7805ef36bf04681dfacc97f671e99e15cdd0e13491e2274075033207d52fcf8cc13e1791adca769e8691836a39d76e80669f03901cfde7e9ad04",
+    "keyVersion": 1,
+    "verificationStatus": "VERIFIED",
+    "id": "4ca59751-1c5c-4082-ac42-3d07a992c2a1",
+    "createdAt": "2026-10-03T09:05:11.409Z",
+    "updatedAt": "2026-10-03T09:05:11.409Z"
+  },
+  {
+    "sessionId": "4bab788a-7d6c-4e73-a3ba-070112b83d8a",
+    "signerId": "dfe2f95b-365c-42db-90f2-1f07cc9b5050",
+    "algorithm": "Ed25519",
+    "payloadHash": "6dbdd0f0462d1186503e97193dc5c5ef257b9eb5affed77f532d2491f3c15e35",
+    "signature": "2bb3506cd8cb40baf817bd040dd8fbbb4771e5677c2249e93089c512049f608eb8e1e4374e73e20e7e6c565aad92d1516a96901a0ad571c2c41bd13e409d8508",
+    "keyVersion": 1,
+    "verificationStatus": "VERIFIED",
+    "id": "f12bb364-7026-4c49-8f7d-6463b6adf20f",
+    "createdAt": "2026-10-03T09:05:53.852Z",
+    "updatedAt": "2026-10-03T09:05:53.852Z"
   }
 ]

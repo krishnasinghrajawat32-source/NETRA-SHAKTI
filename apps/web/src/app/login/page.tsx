@@ -62,7 +62,7 @@ export default function LoginPage() {
                 required
                 value={username}
                 onChange={e => setUsername(e.target.value)}
-                placeholder="e.g. commander.rawat"
+                placeholder="e.g. netra.admin or username"
                 className="w-full bg-cyber-surface border border-cyber-border rounded pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyber-cyan font-mono"
               />
             </div>
@@ -99,7 +99,14 @@ export default function LoginPage() {
               </>
             )}
           </button>
-          <div className="pt-2 text-center">
+          
+          <div className="pt-3 text-center flex flex-col space-y-2">
+            <Link
+              href="/signup"
+              className="text-xs font-mono text-cyber-cyan hover:text-white transition-colors"
+            >
+              NEW PERSONNEL? CREATE DEFENCE ACCOUNT →
+            </Link>
             <p className="text-[11px] font-mono text-cyber-muted">
               OFFICIAL ACCESS GATEWAY // AUTHORIZED MILITARY &amp; INTELLIGENCE PERSONNEL ONLY
             </p>

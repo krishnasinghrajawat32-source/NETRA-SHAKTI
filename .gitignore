@@ -4,3 +4,6 @@ node_modules/
 .next/
 dist/
 build/
+apps/api/data/db/
+apps/api/data/secure-storage/
+*.tsbuildinfo

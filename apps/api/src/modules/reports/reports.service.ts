@@ -12,7 +12,7 @@ export class ReportsService {
   private _audit: AuditService | null = null;
 
   constructor(
-    @Optional() @Inject(AuditService) private readonly auditService?: AuditService
+    private readonly auditService?: AuditService
   ) {}
 
   private get audit(): AuditService {

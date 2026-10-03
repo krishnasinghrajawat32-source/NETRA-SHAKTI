@@ -42,8 +42,8 @@ export class DocumentsService {
   private _audit: AuditService | null = null;
 
   constructor(
-    @Optional() @Inject(StorageService) private readonly storageService?: StorageService,
-    @Optional() @Inject(AuditService) private readonly auditService?: AuditService
+    private readonly storageService?: StorageService,
+    private readonly auditService?: AuditService
   ) {}
 
   private get storage(): StorageService {

@@ -10,11 +10,15 @@
   "scripts": {
     "dev:api": "npm --prefix apps/api run dev",
     "dev:web": "npm --prefix apps/web run dev",
+    "build": "npm run build:packages && npm --prefix apps/web run build",
     "build:packages": "npm --prefix packages/shared-types run build && npm --prefix packages/crypto run build && npm --prefix packages/watermark run build && npm --prefix packages/ledger run build && npm --prefix packages/database run build && npm --prefix packages/config run build",
+    "build:api": "npm run build:packages && npm --prefix apps/api run build",
+    "build:web": "npm run build:packages && npm --prefix apps/web run build",
+    "build:all": "npm run build:packages && npm --prefix apps/api run build && npm --prefix apps/web run build",
     "admin:bootstrap": "npm --prefix apps/api run admin:bootstrap",
     "admin:create": "npm --prefix apps/api run admin:create",
     "seed:test": "npm --prefix apps/api run seed:test",
-    "test": "node --test --import tsx \"tests/**/*.test.ts\""
+    "test": "node --test --import tsx tests/crypto.test.ts tests/ledger.test.ts tests/watermark.test.ts tests/e2e-workflow.test.ts"
   },
   "keywords": [
     "cybersecurity",

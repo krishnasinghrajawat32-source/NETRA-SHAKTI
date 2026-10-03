@@ -28,8 +28,39 @@ export class AuthController {
     return this.fallbackAuthService;
   }
 
+  @Post('register')
+  @ApiOperation({ summary: 'Register new personnel account with DEFENCE credentials' })
+  async register(
+    @Body() body: {
+      username: string;
+      email: string;
+      password: string;
+      displayName: string;
+      department?: string;
+      rank?: string;
+      unit?: string;
+      clearanceLevel?: any;
+    },
+    @Req() req: Request
+  ) {
+    const ipAddress = (req.headers['x-forwarded-for'] as string) || req.socket.remoteAddress;
+    const userAgent = req.headers['user-agent'];
+
+    return this.service.register({
+      ...body,
+      ipAddress,
+      userAgent
+    });
+  }
+
+  @Post('signup')
+  @ApiOperation({ summary: 'Public registration alias' })
+  async signup(@Body() body: any, @Req() req: Request) {
+    return this.register(body, req);
+  }
+
   @Post('login')
-  @ApiOperation({ summary: 'Authenticate user with defense credentials' })
+  @ApiOperation({ summary: 'Authenticate user with DEFENCE credentials' })
   async login(
     @Body() body: { username: string; password: string },
     @Req() req: Request,
