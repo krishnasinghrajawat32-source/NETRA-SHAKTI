@@ -1,4 +1,5 @@
-FROM node:20-alpine AS builder
+FROM node:20-slim AS builder
+RUN apt-get update && apt-get install -y --no-install-recommends python3 make g++ && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY package*.json ./
 COPY packages ./packages
@@ -12,7 +13,7 @@ RUN npm run build --workspace=packages/database
 RUN npm run build --workspace=packages/config
 RUN npm run build --workspace=apps/api
 
-FROM node:20-alpine AS runner
+FROM node:20-slim AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 COPY --from=builder /app /app
