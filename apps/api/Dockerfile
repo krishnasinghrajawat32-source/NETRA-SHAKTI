@@ -4,7 +4,8 @@ WORKDIR /app
 COPY package*.json ./
 COPY packages ./packages
 COPY apps/api ./apps/api
-RUN npm install
+RUN npm install --ignore-scripts
+RUN npm rebuild
 RUN npm run build --workspace=packages/shared-types
 RUN npm run build --workspace=packages/crypto
 RUN npm run build --workspace=packages/watermark
