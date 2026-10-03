@@ -8,10 +8,10 @@ dotenv.config({ path: path.resolve(__dirname, '../../../.env') });
 
 export const ConfigSchema = z.object({
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
-  PORT: z.coerce.number().default(4000),
-  WEB_PORT: z.coerce.number().default(3000),
-  APP_URL: z.string().default('http://localhost:3000'),
-  API_URL: z.string().default('http://localhost:4000'),
+  PORT: z.coerce.number().default(4001),
+  WEB_PORT: z.coerce.number().default(3001),
+  APP_URL: z.string().default('http://localhost:3001'),
+  API_URL: z.string().default('http://localhost:4001'),
   DATABASE_URL: z.string().default('postgresql://postgres:postgres@localhost:5432/netra_shakti?schema=public'),
   REDIS_URL: z.string().default('redis://localhost:6379'),
   MINIO_ENDPOINT: z.string().default('localhost'),

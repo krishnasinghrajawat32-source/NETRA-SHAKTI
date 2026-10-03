@@ -40,18 +40,25 @@ export class AuthService {
     ipAddress?: string;
     userAgent?: string;
   }) {
-    const { username, password, ipAddress, userAgent } = credentials;
+    const { password, ipAddress, userAgent } = credentials;
+    const cleanUsername = (credentials.username || '').trim();
+    const normalizedDot = cleanUsername.toLowerCase().replace(/\s+/g, '.');
 
     const user = await prisma.user.findFirst({
       where: {
-        OR: [{ username }, { email: username }]
+        OR: [
+          { username: cleanUsername },
+          { email: cleanUsername },
+          { username: normalizedDot },
+          { displayName: cleanUsername }
+        ]
       }
     });
 
     if (!user) {
       await this.audit.log({
         eventType: AuditEventType.LOGIN_FAILED,
-        action: `Failed login attempt for username: ${username}`,
+        action: `Failed login attempt for username: ${cleanUsername}`,
         ipAddress,
         userAgent,
         status: 'FAILURE'

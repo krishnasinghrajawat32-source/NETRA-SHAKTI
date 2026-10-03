@@ -78,5 +78,15 @@
     "id": "5355dcc9-62e9-4dcd-b275-46d8cda8fb12",
     "createdAt": "2026-10-03T09:05:53.804Z",
     "updatedAt": "2026-10-03T09:05:53.804Z"
+  },
+  {
+    "userId": "938457c4-f6f0-44e0-ad15-d7bd51b1603f",
+    "refreshTokenHash": "5811077b580200bc6a94c9b1b3d915494d177dd4f5e08c22b64711fde41adef3",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+    "ipAddress": "::1",
+    "expiresAt": "2026-10-10T13:28:17.126Z",
+    "id": "08e625cb-80a6-4bb9-9234-28d78b024cd3",
+    "createdAt": "2026-10-03T13:28:17.126Z",
+    "updatedAt": "2026-10-03T13:28:17.126Z"
   }
 ]

@@ -3,16 +3,16 @@
     "username": "netra.admin",
     "email": "admin@defence.netrashakti.gov",
     "displayName": "National Cyber Security Director",
-    "passwordHash": "$argon2id$v=19$m=65536,p=4,t=3$VIUZP4E1grd+pZs5x2tqHA$inmjpsF8vseN26oR/TCklbWh3DfrHG/vwpjJrxZTPLU",
+    "passwordHash": "$argon2id$v=19$m=65536,p=4,t=3$Jyz9soFcHXOIwC7Ddn4g3g$0xDs9RmNXz6pXrZu+nXbLYv0WnLjsOnO0ci92UBDfQU",
     "role": "SUPER_ADMIN",
     "department": "DEFENCE_CYBER_COMMAND",
     "rank": "Director General",
     "unit": "HQ Strategic Cyber Command",
     "clearanceLevel": "TOP_SECRET",
-    "status": "PASSWORD_CHANGE_REQUIRED",
+    "status": "ACTIVE",
     "id": "ded985b2-960c-437d-8dad-cc94f60b17fc",
     "createdAt": "2026-09-28T19:04:49.997Z",
-    "updatedAt": "2026-09-28T19:04:49.997Z"
+    "updatedAt": "2026-10-03T09:49:34.517Z"
   },
   {
     "username": "commander.rawat",
@@ -193,5 +193,19 @@
     "id": "dfe2f95b-365c-42db-90f2-1f07cc9b5050",
     "createdAt": "2026-10-03T09:05:52.783Z",
     "updatedAt": "2026-10-03T09:05:52.783Z"
+  },
+  {
+    "username": "krishna.singh",
+    "email": "krishna.singh@defence.netrashakti.gov",
+    "displayName": "Krishna Singh",
+    "passwordHash": "$argon2id$v=19$m=65536,p=4,t=3$Jyz9soFcHXOIwC7Ddn4g3g$0xDs9RmNXz6pXrZu+nXbLYv0WnLjsOnO0ci92UBDfQU",
+    "role": "SUPER_ADMIN",
+    "department": "DEFENCE_CYBER_COMMAND",
+    "rank": "Director General",
+    "clearanceLevel": "TOP_SECRET",
+    "status": "ACTIVE",
+    "id": "935888c3-1157-4827-841c-62b6e2c94bf1",
+    "createdAt": "2026-10-03T09:49:34.502Z",
+    "updatedAt": "2026-10-03T09:49:34.502Z"
   }
 ]

@@ -359,5 +359,18 @@
     "id": "d16c65f4-b1c8-4b5c-b739-761fe5498a7e",
     "createdAt": "2026-10-03T09:05:53.886Z",
     "updatedAt": "2026-10-03T09:05:53.886Z"
+  },
+  {
+    "eventType": "LOGIN_SUCCESS",
+    "userId": "938457c4-f6f0-44e0-ad15-d7bd51b1603f",
+    "ipAddress": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+    "resourceType": null,
+    "resourceId": null,
+    "action": "User commander.rawat authenticated successfully (SUPER_ADMIN)",
+    "status": "SUCCESS",
+    "id": "113ccda7-338d-4ac2-a2d2-8bd5e1179c3e",
+    "createdAt": "2026-10-03T13:28:17.130Z",
+    "updatedAt": "2026-10-03T13:28:17.130Z"
   }
 ]

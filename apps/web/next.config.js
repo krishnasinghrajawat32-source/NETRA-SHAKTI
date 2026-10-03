@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const rawApiTarget = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || 'http://localhost:4000/api/v1';
+const rawApiTarget = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || 'http://localhost:4001/api/v1';
 const apiTarget = rawApiTarget.replace(/\/+$/, '');
 
 const nextConfig = {
@@ -8,7 +8,7 @@ const nextConfig = {
   async rewrites() {
     const destination = apiTarget.startsWith('http')
       ? `${apiTarget}/:path*`
-      : 'http://localhost:4000/api/v1/:path*';
+      : 'http://localhost:4001/api/v1/:path*';
 
     return [
       {
