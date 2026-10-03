@@ -83,17 +83,52 @@ function getAirGappedFallback(endpoint: string): any {
 
   if (clean.includes('/dashboard/stats')) {
     return {
-      totalDocuments: 12,
-      activeWatermarks: 38,
-      ledgerTransactions: 74,
-      tamperAlerts: 0,
-      classifiedBreakdown: { TOP_SECRET: 4, SECRET: 5, CONFIDENTIAL: 3, UNCLASSIFIED: 0 },
-      recentActivity: [
-        { id: 'act-01', action: 'AES-256-GCM Ingestion: OP_TRINETRA_LOGISTICS.pdf', user: 'col.sharma', timestamp: new Date().toISOString() },
-        { id: 'act-02', action: 'DCT Invisible Watermark Embedded', user: 'maj.verma', timestamp: new Date(Date.now() - 1800000).toISOString() },
-        { id: 'act-03', action: 'Tamper-Evident Hash-Chain Provenance Verified (#74)', user: 'commander.rawat', timestamp: new Date(Date.now() - 3600000).toISOString() }
+      protectedDocuments: 14,
+      activeRecipients: 8,
+      completedSessions: 42,
+      openInvestigations: 2,
+      verifiedAttributionCases: 5,
+      failedSecurityOperations: 0,
+      mlServiceStatus: 'UP',
+      ledgerStatus: 'VERIFIED',
+      sessionTimeline: [
+        { date: '0800H', count: 3 },
+        { date: '1100H', count: 7 },
+        { date: '1400H', count: 12 },
+        { date: '1700H', count: 18 },
+        { date: '2000H', count: 24 }
       ],
-      systemIntegrity: 100
+      classificationDistribution: [
+        { classification: 'TOP_SECRET', count: 4 },
+        { classification: 'SECRET', count: 6 },
+        { classification: 'CONFIDENTIAL', count: 4 }
+      ],
+      recentActivity: [
+        {
+          id: 'act-01',
+          eventType: 'DOCUMENT_ENCRYPTED',
+          action: 'AES-256-GCM Ingestion: OP_TRINETRA_LOGISTICS.pdf',
+          user: { displayName: 'Col. Vikram Sharma' },
+          status: 'SUCCESS',
+          createdAt: new Date().toISOString()
+        },
+        {
+          id: 'act-02',
+          eventType: 'WATERMARK_INJECTED',
+          action: 'DCT Invisible Watermark Embedded',
+          user: { displayName: 'Maj. Rohan Verma' },
+          status: 'SUCCESS',
+          createdAt: new Date(Date.now() - 1800000).toISOString()
+        },
+        {
+          id: 'act-03',
+          eventType: 'LEDGER_BLOCK_COMMITTED',
+          action: 'Tamper-Evident Hash-Chain Provenance Verified (#74)',
+          user: { displayName: 'Gen. B. Rawat' },
+          status: 'SUCCESS',
+          createdAt: new Date(Date.now() - 3600000).toISOString()
+        }
+      ]
     };
   }
 
