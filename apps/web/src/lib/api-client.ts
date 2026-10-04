@@ -19,7 +19,8 @@ export async function apiClient<T = any>(endpoint: string, options: ApiFetchOpti
   const { data, headers, params, ...customConfig } = options;
 
   const authHeaders: Record<string, string> = {};
-  if (typeof window !== 'undefined') {
+  if (typeof window !== 'undefined' && process.env.NODE_ENV !== 'production') {
+    // Development fallback if cross-origin localhost cookies are restricted by browser
     const token = localStorage.getItem('ns_access_token');
     if (token) {
       authHeaders['Authorization'] = `Bearer ${token}`;
@@ -48,7 +49,13 @@ export async function apiClient<T = any>(endpoint: string, options: ApiFetchOpti
   if (endpoint.startsWith('http://') || endpoint.startsWith('https://')) {
     fullUrl = endpoint;
   } else {
-    const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+    let cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+    // Prevent duplicated /api/v1/api/v1 if endpoint already has /api/v1
+    if (baseUrl.endsWith('/api/v1') && cleanEndpoint.startsWith('/api/v1/')) {
+      cleanEndpoint = cleanEndpoint.substring('/api/v1'.length);
+    } else if (baseUrl.endsWith('/api/v1') && cleanEndpoint === '/api/v1') {
+      cleanEndpoint = '';
+    }
     fullUrl = `${baseUrl}${cleanEndpoint}`;
   }
 

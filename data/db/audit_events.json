@@ -372,5 +372,83 @@
     "id": "113ccda7-338d-4ac2-a2d2-8bd5e1179c3e",
     "createdAt": "2026-10-03T13:28:17.130Z",
     "updatedAt": "2026-10-03T13:28:17.130Z"
+  },
+  {
+    "eventType": "USER_CREATED",
+    "userId": "dd3c6044-8cf1-4dc7-9d2e-de4f803ca302",
+    "ipAddress": "127.0.0.1",
+    "userAgent": "node",
+    "resourceType": null,
+    "resourceId": null,
+    "action": "New personnel registered: officer.alpha.486011 (alpha.486011@defence.gov)",
+    "status": "SUCCESS",
+    "id": "19f8b9d2-5f03-4f1e-853d-b67d7a6ffc4e",
+    "createdAt": "2026-10-04T08:28:07.043Z",
+    "updatedAt": "2026-10-04T08:28:07.043Z"
+  },
+  {
+    "eventType": "LOGIN_SUCCESS",
+    "userId": "dd3c6044-8cf1-4dc7-9d2e-de4f803ca302",
+    "ipAddress": "127.0.0.1",
+    "userAgent": "node",
+    "resourceType": null,
+    "resourceId": null,
+    "action": "User officer.alpha.486011 authenticated successfully (USER)",
+    "status": "SUCCESS",
+    "id": "56de1a50-3c81-46c3-a691-50f0787f7679",
+    "createdAt": "2026-10-04T08:28:07.290Z",
+    "updatedAt": "2026-10-04T08:28:07.290Z"
+  },
+  {
+    "eventType": "USER_CREATED",
+    "userId": "0a6609f9-5e8f-4ab7-969a-a00f1cdae194",
+    "ipAddress": "127.0.0.1",
+    "userAgent": "node",
+    "resourceType": null,
+    "resourceId": null,
+    "action": "New personnel registered: officer.bravo.486011 (bravo.486011@defence.gov)",
+    "status": "SUCCESS",
+    "id": "dae8cea4-9888-43b3-92f9-6c2c84f42d67",
+    "createdAt": "2026-10-04T08:28:08.542Z",
+    "updatedAt": "2026-10-04T08:28:08.542Z"
+  },
+  {
+    "eventType": "LOGIN_SUCCESS",
+    "userId": "0a6609f9-5e8f-4ab7-969a-a00f1cdae194",
+    "ipAddress": "127.0.0.1",
+    "userAgent": "node",
+    "resourceType": null,
+    "resourceId": null,
+    "action": "User officer.bravo.486011 authenticated successfully (USER)",
+    "status": "SUCCESS",
+    "id": "47bafab4-d641-45e9-ab7b-d1edccf134c6",
+    "createdAt": "2026-10-04T08:28:08.708Z",
+    "updatedAt": "2026-10-04T08:28:08.708Z"
+  },
+  {
+    "eventType": "LOGIN_FAILED",
+    "userId": null,
+    "ipAddress": "127.0.0.1",
+    "userAgent": "node",
+    "resourceType": null,
+    "resourceId": null,
+    "action": "Failed login attempt for identifier: nonexistent.officer.xyz",
+    "status": "FAILURE",
+    "id": "d760e704-0ee2-49bb-b9cd-c1a3df994721",
+    "createdAt": "2026-10-04T08:28:08.745Z",
+    "updatedAt": "2026-10-04T08:28:08.745Z"
+  },
+  {
+    "eventType": "LOGIN_FAILED",
+    "userId": "dd3c6044-8cf1-4dc7-9d2e-de4f803ca302",
+    "ipAddress": "127.0.0.1",
+    "userAgent": "node",
+    "resourceType": null,
+    "resourceId": null,
+    "action": "Invalid password for user: officer.alpha.486011",
+    "status": "FAILURE",
+    "id": "43120cec-b386-4af0-80ea-03c2c6b605ec",
+    "createdAt": "2026-10-04T08:28:08.930Z",
+    "updatedAt": "2026-10-04T08:28:08.930Z"
   }
 ]

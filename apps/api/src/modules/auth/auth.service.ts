@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException, BadRequestException, ForbiddenException, Logger, Inject, Optional } from '@nestjs/common';
+import { Injectable, UnauthorizedException, BadRequestException, ConflictException, ForbiddenException, Logger, Inject, Optional } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as crypto from 'crypto';
 import { prisma } from '@netra-shakti/database';
@@ -41,16 +41,15 @@ export class AuthService {
     userAgent?: string;
   }) {
     const { password, ipAddress, userAgent } = credentials;
-    const cleanUsername = (credentials.username || '').trim();
-    const normalizedDot = cleanUsername.toLowerCase().replace(/\s+/g, '.');
+    const cleanUsername = (credentials.username || '').trim().toLowerCase();
+    const normalizedDot = cleanUsername.replace(/\s+/g, '.');
 
     const user = await prisma.user.findFirst({
       where: {
         OR: [
           { username: cleanUsername },
           { email: cleanUsername },
-          { username: normalizedDot },
-          { displayName: cleanUsername }
+          { username: normalizedDot }
         ]
       }
     });
@@ -58,12 +57,12 @@ export class AuthService {
     if (!user) {
       await this.audit.log({
         eventType: AuditEventType.LOGIN_FAILED,
-        action: `Failed login attempt for username: ${cleanUsername}`,
+        action: `Failed login attempt for identifier: ${cleanUsername}`,
         ipAddress,
         userAgent,
         status: 'FAILURE'
       });
-      throw new UnauthorizedException('Invalid cryptographic credentials');
+      throw new UnauthorizedException('Incorrect username/email or password');
     }
 
     const isPasswordValid = await defaultCryptoService.verifyPassword(password, user.passwordHash);
@@ -76,7 +75,7 @@ export class AuthService {
         userAgent,
         status: 'FAILURE'
       });
-      throw new UnauthorizedException('Invalid cryptographic credentials');
+      throw new UnauthorizedException('Incorrect username/email or password');
     }
 
     if (user.status === UserStatus.SUSPENDED) {
@@ -276,15 +275,20 @@ export class AuthService {
     const trimmedUsername = username.trim().toLowerCase();
     const trimmedEmail = email.trim().toLowerCase();
 
-    // Check if user already exists in database
-    const existing = await prisma.user.findFirst({
-      where: {
-        OR: [{ username: trimmedUsername }, { email: trimmedEmail }]
-      }
+    // Check if username already exists in database
+    const existingUser = await prisma.user.findFirst({
+      where: { username: trimmedUsername }
     });
+    if (existingUser) {
+      throw new ConflictException('Username already exists in DEFENCE registry');
+    }
 
-    if (existing) {
-      throw new BadRequestException('Username or official email is already registered in DEFENCE registry');
+    // Check if email already exists in database
+    const existingEmail = await prisma.user.findFirst({
+      where: { email: trimmedEmail }
+    });
+    if (existingEmail) {
+      throw new ConflictException('Official email is already registered in DEFENCE registry');
     }
 
     // Hash password with Argon2id

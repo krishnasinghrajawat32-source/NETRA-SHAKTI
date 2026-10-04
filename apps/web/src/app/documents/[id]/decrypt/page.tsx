@@ -7,6 +7,7 @@ import { useAuth } from '@/context/AuthContext';
 import { Header } from '@/components/layout/Header';
 import { Sidebar } from '@/components/layout/Sidebar';
 import { PdfViewer } from '@/components/PdfViewer';
+import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
 import { api } from '@/lib/api';
 import {
   IDocument,
@@ -92,7 +93,7 @@ export default function SecureDecryptionWorkflowPage() {
       setCompleted(true);
 
       // Load stream URL
-      setPdfUrl(`/api/v1/decryption-sessions/${completedSession.id}/stream`);
+      setPdfUrl(`/decryption-sessions/${completedSession.id}/stream`);
     } catch (err: any) {
       setError(err.message || 'Decryption workflow failed');
     } finally {
@@ -101,9 +102,10 @@ export default function SecureDecryptionWorkflowPage() {
   };
 
   return (
-    <div className="min-h-screen bg-cyber-black text-gray-100 flex flex-col">
-      <Header />
-      <div className="flex flex-1">
+    <ProtectedRoute>
+      <div className="min-h-screen bg-cyber-black text-gray-100 flex flex-col">
+        <Header />
+        <div className="flex flex-1">
         <Sidebar />
 
         <main className="flex-1 p-8 space-y-6 overflow-y-auto">
@@ -313,5 +315,6 @@ export default function SecureDecryptionWorkflowPage() {
         </main>
       </div>
     </div>
+    </ProtectedRoute>
   );
 }

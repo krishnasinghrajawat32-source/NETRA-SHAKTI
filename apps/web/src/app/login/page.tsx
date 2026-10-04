@@ -2,27 +2,70 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
 import { useAuth } from '@/context/AuthContext';
-import { Shield, Lock, User, Key, AlertCircle, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { BRAND } from '@netra-shakti/shared-types';
+import {
+  Shield,
+  Lock,
+  User,
+  Key,
+  Eye,
+  EyeOff,
+  AlertCircle,
+  ArrowRight,
+  RefreshCw,
+  CheckCircle2
+} from 'lucide-react';
+
+const loginSchema = z.object({
+  identifier: z
+    .string()
+    .min(1, 'Username or official email is required')
+    .trim(),
+  password: z
+    .string()
+    .min(1, 'Cryptographic password is required')
+});
+
+type LoginFormData = z.infer<typeof loginSchema>;
 
 export default function LoginPage() {
   const { login } = useAuth();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
-    setLoading(true);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting }
+  } = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      identifier: '',
+      password: ''
+    }
+  });
+
+  const onSubmit = async (data: LoginFormData) => {
+    setServerError(null);
 
     try {
-      await login(username, password);
+      await login(data.identifier, data.password);
     } catch (err: any) {
-      setError(err.message || 'Authentication failed. Please verify DEFENCE credentials.');
-    } finally {
-      setLoading(false);
+      if (err.status === 401) {
+        setServerError('Incorrect username/email or password.');
+      } else if (err.status === 403) {
+        setServerError('Account has been suspended by defense administrator.');
+      } else if (err.status === 429) {
+        setServerError('Too many authentication attempts. Please wait before retrying.');
+      } else if (err.status === 500) {
+        setServerError('Authentication service encountered an internal error. Please try again.');
+      } else {
+        setServerError(err.message || 'Authentication failed. Please verify DEFENCE credentials.');
+      }
     }
   };
 
@@ -35,77 +78,104 @@ export default function LoginPage() {
             <Shield className="w-7 h-7 text-cyber-cyan" />
           </div>
           <h1 className="text-xl font-mono font-bold text-white uppercase tracking-wider">
-            NETRA SHAKTI
+            {BRAND.name}
           </h1>
-          <p className="text-xs font-mono text-cyber-muted mt-1">
+          <p className="text-xs font-mono text-cyber-cyan mt-0.5">
+            {BRAND.tagline}
+          </p>
+          <p className="text-[11px] font-mono text-cyber-muted mt-1 uppercase">
             SECURE DEFENCE AUTHENTICATION GATEWAY
           </p>
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-4">
-          {error && (
+        <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-4" noValidate>
+          {serverError && (
             <div className="p-3 bg-cyber-red/10 border border-cyber-red/40 rounded text-xs font-mono text-cyber-red flex items-start space-x-2">
               <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
-              <span>{error}</span>
+              <span>{serverError}</span>
             </div>
           )}
 
           <div>
             <label className="block text-xs font-mono text-gray-300 mb-1">
-              OPERATIONAL USERNAME / EMAIL
+              OPERATIONAL USERNAME / OFFICIAL EMAIL *
             </label>
             <div className="relative">
               <User className="w-4 h-4 absolute left-3 top-3 text-gray-500" />
               <input
                 type="text"
-                required
-                value={username}
-                onChange={e => setUsername(e.target.value)}
-                placeholder="e.g. netra.admin or username"
-                className="w-full bg-cyber-surface border border-cyber-border rounded pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyber-cyan font-mono"
+                autoComplete="username"
+                {...register('identifier')}
+                placeholder="e.g. officer.kumar or officer@defence.gov"
+                className={`w-full bg-cyber-surface border rounded pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none font-mono ${
+                  errors.identifier ? 'border-cyber-red focus:border-cyber-red' : 'border-cyber-border focus:border-cyber-cyan'
+                }`}
               />
             </div>
+            {errors.identifier && (
+              <p className="text-[11px] font-mono text-cyber-red mt-1">
+                {errors.identifier.message}
+              </p>
+            )}
           </div>
 
           <div>
             <label className="block text-xs font-mono text-gray-300 mb-1">
-              CRYPTOGRAPHIC PASSWORD
+              CRYPTOGRAPHIC PASSWORD *
             </label>
             <div className="relative">
               <Key className="w-4 h-4 absolute left-3 top-3 text-gray-500" />
               <input
-                type="password"
-                required
-                value={password}
-                onChange={e => setPassword(e.target.value)}
+                type={showPassword ? 'text' : 'password'}
+                autoComplete="current-password"
+                {...register('password')}
                 placeholder="••••••••••••"
-                className="w-full bg-cyber-surface border border-cyber-border rounded pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyber-cyan font-mono"
+                className={`w-full bg-cyber-surface border rounded pl-10 pr-10 py-2.5 text-sm text-white focus:outline-none font-mono ${
+                  errors.password ? 'border-cyber-red focus:border-cyber-red' : 'border-cyber-border focus:border-cyber-cyan'
+                }`}
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword(prev => !prev)}
+                className="absolute right-3 top-3 text-gray-500 hover:text-cyber-cyan focus:outline-none"
+                tabIndex={-1}
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+              >
+                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+              </button>
             </div>
+            {errors.password && (
+              <p className="text-[11px] font-mono text-cyber-red mt-1">
+                {errors.password.message}
+              </p>
+            )}
           </div>
 
           <button
             type="submit"
-            disabled={loading}
+            disabled={isSubmitting}
             className="w-full py-3 bg-cyber-cyan text-black font-mono font-bold text-xs hover:bg-cyber-cyan/90 transition-all flex items-center justify-center space-x-2 disabled:opacity-50 mt-6 shadow-md shadow-cyber-cyan/20"
           >
-            {loading ? (
-              <span>VERIFYING CRYPTOGRAPHIC CREDENTIALS...</span>
+            {isSubmitting ? (
+              <>
+                <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                <span>LOGGING IN...</span>
+              </>
             ) : (
               <>
-                <span>AUTHENTICATE & ENTER SYSTEM</span>
+                <span>AUTHENTICATE &amp; ENTER SYSTEM</span>
                 <ArrowRight className="w-4 h-4" />
               </>
             )}
           </button>
-          
+
           <div className="pt-3 text-center flex flex-col space-y-2">
             <Link
               href="/signup"
               className="text-xs font-mono text-cyber-cyan hover:text-white transition-colors"
             >
-              NEW PERSONNEL? CREATE DEFENCE ACCOUNT →
+              DON&apos;T HAVE AN ACCOUNT? CREATE DEFENCE ACCOUNT →
             </Link>
             <p className="text-[11px] font-mono text-cyber-muted">
               OFFICIAL ACCESS GATEWAY // AUTHORIZED MILITARY &amp; INTELLIGENCE PERSONNEL ONLY

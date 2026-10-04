@@ -97,5 +97,27 @@
     "id": "6785893c-41cc-4340-a216-8cc1299b875c",
     "createdAt": "2026-10-03T09:05:53.613Z",
     "updatedAt": "2026-10-03T09:05:53.613Z"
+  },
+  {
+    "userId": "dd3c6044-8cf1-4dc7-9d2e-de4f803ca302",
+    "signingPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAxA3grIdmsleJPSCeu+gdSS+AuNM7SY+Jqek1EYdRMcU=\n-----END PUBLIC KEY-----\n",
+    "encryptionPublicKey": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAsq6sFFBKCbnYqWdLCjp1\nAjIo8U+aLvvXPiHEnoPNcxNy0K89h7sCJ6EpnaPm9u5SIa9AUtBw93bpe8NZcnxm\n+b6tUckOBFobkisJQS/M9umtRMW5T2zbl+uywXlyB6kpgIv2pSQijWcEH2ByaJmN\nFZxzE5YvNZH9Ie736ZOj5V7EmY5VTaTms9leiY26ffl4TW1W7dRqgM4x+hHxoMZ8\n/4cfXQZKO7M1MNVGkMQ1OVeoi0PHjh8aXCj29QwwWnYMaun+CMJ1DTAl6ZGLaLrH\n61XuEN4CCBRqYar115G9lSPhb170z5bEVXcgoLAEyd8FY6KHhkXoB4yZejw5Qb2P\n0aAs3KsYGJezqG3Uj7TiW934sLvc1GqgAnz79Wm6jnizWppYb87DtCLs5gVADuFx\n1nc2Qxwkzrlj+kQu1W6GHwnQrU8UvPlx0AgoKddkvysA4vFk0yvaycYqyp6seWaE\ncxdzXFgAOr/0HIVKhjr2788jFZ17ToVa1heS5HK4COSeJCj5VV9fuvd5p4tOYqtb\n7zjzXhzXI/TRJrII/UOJ0QVTfdHWoWzU4Et3vtEZVoaeBQPUy5PeWSahCkeEI+QG\nVcm1pyhZikyuL1U5SpRFBV31fnOtmb8nXqfNehuoPnwROQaeO0nR+3TLhTKfgd+P\nefU/gDEuljTDlSU5P/vIi5sCAwEAAQ==\n-----END PUBLIC KEY-----\n",
+    "algorithm": "Ed25519+RSA-4096-OAEP",
+    "keyVersion": 1,
+    "status": "ACTIVE",
+    "id": "71adfec0-603a-4ba6-8e31-04d94f4e21a9",
+    "createdAt": "2026-10-04T08:28:07.039Z",
+    "updatedAt": "2026-10-04T08:28:07.039Z"
+  },
+  {
+    "userId": "0a6609f9-5e8f-4ab7-969a-a00f1cdae194",
+    "signingPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA5eeUa8x27EW6hgo2h+t4078p4D7vKRNVwkTswSVnlhk=\n-----END PUBLIC KEY-----\n",
+    "encryptionPublicKey": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAu1C+RMq2pdLbCUA8ZHgA\na93HLcmEF/TZSrX/RkuSazqUlNEVFvMKJVkHm8qrAqi7Sikhc1+w95F8/9/nGOzQ\ngYX75Al+nujIpmdv7RweMBDMSHshUUzbgMRybtjEhYz/C+pMIip2Z0ZvbjiLSrb8\n6IsgUVIOwzFsYuHTyOnGhTCVmiSa7H50zsTFKT0JN+I5nBmSFrgvKt9CmgYBIrlP\nzMyF4aHjrnV3bJzL+LqYYCMSPb0xykUYQbA/Hl2lZPbk6TfcUcHn5J+iTUaUEyVE\n2T4b65QaATHO1i0x1RH4Z1pDmc/A0ac0zaJbFLUtjEF7syFFBFFm6m1T5THge80Y\nwKb38xtIkaN4k1XK9fP6pt1/qRICJ90e37qA3whEgL1J3GIxBn1ba+fA0IXB2/Tx\nRBipvjP67GU7ZUL0P7rG77Ct/l5HgCl4Di/MgMy06wBCRfwX8CEh/uEXk+nDyixa\n2+RECwfEyqAzPfs2vDRFFKiiZszqTsfTxQEl0QozlnI6dXb7oo0L2XC7Cv/XmLw+\nxBb5LXwtEh/OYPZ8+F8qYaGVQMAU6aPi+0X3q9jTCo4Pb1pz5B6Uw2+t3WvySaab\naobfxotbPIKsZZCn4sPGArFpSnel8EYOPxTesncDxEevDAzI7JeRGEQXZibcdXUz\nvFeIphTZsxdW5cqTcyfydxECAwEAAQ==\n-----END PUBLIC KEY-----\n",
+    "algorithm": "Ed25519+RSA-4096-OAEP",
+    "keyVersion": 1,
+    "status": "ACTIVE",
+    "id": "197368b5-b3cf-4bff-b698-7aa9168ec36c",
+    "createdAt": "2026-10-04T08:28:08.538Z",
+    "updatedAt": "2026-10-04T08:28:08.538Z"
   }
 ]

@@ -77,21 +77,21 @@ export class AuthController {
     });
 
     const isProd = process.env.NODE_ENV === 'production';
-
-    res.cookie('ns_access_token', result.accessToken, {
+    const cookieOptions = {
       httpOnly: true,
       secure: isProd,
-      sameSite: 'lax',
-      maxAge: 15 * 60 * 1000, // 15 mins
+      sameSite: (isProd ? 'none' : 'lax') as 'none' | 'lax',
       path: '/'
+    };
+
+    res.cookie('ns_access_token', result.accessToken, {
+      ...cookieOptions,
+      maxAge: 15 * 60 * 1000 // 15 mins
     });
 
     res.cookie('ns_refresh_token', result.refreshToken, {
-      httpOnly: true,
-      secure: isProd,
-      sameSite: 'lax',
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-      path: '/'
+      ...cookieOptions,
+      maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     });
 
     return result;
@@ -100,26 +100,28 @@ export class AuthController {
   @Post('refresh')
   @ApiOperation({ summary: 'Rotate and refresh access token session' })
   async refresh(@Req() req: Request, @Res({ passthrough: true }) res: Response) {
-    const refreshToken = req.cookies['ns_refresh_token'] || req.body?.refreshToken;
+    const refreshToken = req.cookies?.['ns_refresh_token'] || req.body?.refreshToken;
     const ipAddress = (req.headers['x-forwarded-for'] as string) || req.socket.remoteAddress;
     const userAgent = req.headers['user-agent'];
 
     const result = await this.service.refreshToken(refreshToken, ipAddress, userAgent);
 
     const isProd = process.env.NODE_ENV === 'production';
-
-    res.cookie('ns_access_token', result.accessToken, {
+    const cookieOptions = {
       httpOnly: true,
       secure: isProd,
-      sameSite: 'lax',
+      sameSite: (isProd ? 'none' : 'lax') as 'none' | 'lax',
+      path: '/'
+    };
+
+    res.cookie('ns_access_token', result.accessToken, {
+      ...cookieOptions,
       maxAge: 15 * 60 * 1000,
       path: '/'
     });
 
     res.cookie('ns_refresh_token', result.refreshToken, {
-      httpOnly: true,
-      secure: isProd,
-      sameSite: 'lax',
+      ...cookieOptions,
       maxAge: 7 * 24 * 60 * 60 * 1000,
       path: '/'
     });
@@ -130,11 +132,19 @@ export class AuthController {
   @Post('logout')
   @ApiOperation({ summary: 'Revoke active session and clear cookies' })
   async logout(@Req() req: Request, @Res({ passthrough: true }) res: Response) {
-    const refreshToken = req.cookies['ns_refresh_token'] || req.body?.refreshToken;
+    const refreshToken = req.cookies?.['ns_refresh_token'] || req.body?.refreshToken;
     await this.service.logout(refreshToken);
 
-    res.clearCookie('ns_access_token', { path: '/' });
-    res.clearCookie('ns_refresh_token', { path: '/' });
+    const isProd = process.env.NODE_ENV === 'production';
+    const cookieOptions = {
+      httpOnly: true,
+      secure: isProd,
+      sameSite: (isProd ? 'none' : 'lax') as 'none' | 'lax',
+      path: '/'
+    };
+
+    res.clearCookie('ns_access_token', cookieOptions);
+    res.clearCookie('ns_refresh_token', cookieOptions);
 
     return { message: 'Logged out successfully' };
   }

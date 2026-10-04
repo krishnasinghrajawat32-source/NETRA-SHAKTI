@@ -25,9 +25,33 @@ async function bootstrap() {
   // Cookie Parser for HttpOnly Session Management
   app.use(cookieParser());
 
-  // CORS
+  // Dynamic CORS for local dev, Vercel preview/production deployments, and configured domains
+  const staticOrigins = [
+    appConfig.APP_URL,
+    process.env.FRONTEND_URL,
+    process.env.CORS_ORIGIN,
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'http://localhost:3001',
+    'http://127.0.0.1:3001'
+  ].filter(Boolean) as string[];
+
   app.enableCors({
-    origin: [appConfig.APP_URL, 'http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001'],
+    origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
+      // Allow requests with no origin (e.g. mobile apps, curl, server-side fetch)
+      if (!origin) return callback(null, true);
+
+      const isAllowed =
+        staticOrigins.includes(origin) ||
+        origin.endsWith('.vercel.app') ||
+        /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin);
+
+      if (isAllowed) {
+        callback(null, true);
+      } else {
+        callback(null, false);
+      }
+    },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'X-Request-ID', 'X-Device-Fingerprint']

@@ -207,5 +207,35 @@
     "id": "935888c3-1157-4827-841c-62b6e2c94bf1",
     "createdAt": "2026-10-03T09:49:34.502Z",
     "updatedAt": "2026-10-03T09:49:34.502Z"
+  },
+  {
+    "username": "officer.alpha.486011",
+    "email": "alpha.486011@defence.gov",
+    "displayName": "Captain Alpha 486011",
+    "passwordHash": "$argon2id$v=19$m=65536,p=4,t=3$/5l4CiqI+l9HJQYdSjq5ug$BfCDkNMz0nw2w4QBjKZyCNLWsjnarNnVCOoDCojW2ug",
+    "role": "USER",
+    "department": "DEFENCE_CYBER_COMMAND",
+    "rank": null,
+    "unit": null,
+    "clearanceLevel": "CONFIDENTIAL",
+    "status": "ACTIVE",
+    "id": "dd3c6044-8cf1-4dc7-9d2e-de4f803ca302",
+    "createdAt": "2026-10-04T08:28:06.549Z",
+    "updatedAt": "2026-10-04T08:28:06.549Z"
+  },
+  {
+    "username": "officer.bravo.486011",
+    "email": "bravo.486011@defence.gov",
+    "displayName": "Major Bravo 486011",
+    "passwordHash": "$argon2id$v=19$m=65536,p=4,t=3$BePplwqk5HIbrFunkIJNvA$SWldej3l7Ew2pvPmzjdTlHZufv1Xbn/2l1nkbAuYjGQ",
+    "role": "USER",
+    "department": "DEFENCE_INTELLIGENCE_AGENCY",
+    "rank": null,
+    "unit": null,
+    "clearanceLevel": "CONFIDENTIAL",
+    "status": "ACTIVE",
+    "id": "0a6609f9-5e8f-4ab7-969a-a00f1cdae194",
+    "createdAt": "2026-10-04T08:28:07.546Z",
+    "updatedAt": "2026-10-04T08:28:07.546Z"
   }
 ]

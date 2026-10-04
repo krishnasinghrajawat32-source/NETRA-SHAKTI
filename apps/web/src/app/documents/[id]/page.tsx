@@ -6,6 +6,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { Header } from '@/components/layout/Header';
 import { Sidebar } from '@/components/layout/Sidebar';
+import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
 import { api } from '@/lib/api';
 import {
   IDocument,
@@ -157,10 +158,11 @@ export default function DocumentDetailsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-cyber-black text-gray-100 flex flex-col">
-      <Header />
-      <div className="flex flex-1">
-        <Sidebar />
+    <ProtectedRoute>
+      <div className="min-h-screen bg-cyber-black text-gray-100 flex flex-col">
+        <Header />
+        <div className="flex flex-1">
+          <Sidebar />
 
         <main className="flex-1 p-8 space-y-8 overflow-y-auto">
           {/* Back Button & Top Bar */}
@@ -420,5 +422,6 @@ export default function DocumentDetailsPage() {
         </main>
       </div>
     </div>
+    </ProtectedRoute>
   );
 }

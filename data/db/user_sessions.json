@@ -88,5 +88,26 @@
     "id": "08e625cb-80a6-4bb9-9234-28d78b024cd3",
     "createdAt": "2026-10-03T13:28:17.126Z",
     "updatedAt": "2026-10-03T13:28:17.126Z"
+  },
+  {
+    "userId": "dd3c6044-8cf1-4dc7-9d2e-de4f803ca302",
+    "refreshTokenHash": "86670e7a67f8c24bf40d556f1c58ad7fd63253ffc84ff04baa06f5a030bc7b3b",
+    "userAgent": "node",
+    "ipAddress": "127.0.0.1",
+    "expiresAt": "2026-10-11T08:28:07.336Z",
+    "id": "c28a8b9e-0ca9-4299-9c31-f617ff1cb6b4",
+    "createdAt": "2026-10-04T08:28:07.287Z",
+    "updatedAt": "2026-10-04T08:28:08.979Z",
+    "isRevoked": true
+  },
+  {
+    "userId": "0a6609f9-5e8f-4ab7-969a-a00f1cdae194",
+    "refreshTokenHash": "ec3f19d6d88b2b444677c5799dce57c1f3cebb5691317f773b8b790a40b44d6f",
+    "userAgent": "node",
+    "ipAddress": "127.0.0.1",
+    "expiresAt": "2026-10-11T08:28:08.706Z",
+    "id": "33db6139-d091-4ef3-bfdf-01829f57915d",
+    "createdAt": "2026-10-04T08:28:08.706Z",
+    "updatedAt": "2026-10-04T08:28:08.706Z"
   }
 ]

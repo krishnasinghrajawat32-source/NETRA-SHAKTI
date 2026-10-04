@@ -38,7 +38,7 @@ export default function LandingPage() {
           </div>
         </div>
 
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-3">
           {user ? (
             <Link
               href="/dashboard"
@@ -48,13 +48,21 @@ export default function LandingPage() {
               <ArrowRight className="w-4 h-4" />
             </Link>
           ) : (
-            <Link
-              href="/login"
-              className="px-5 py-2 bg-cyber-cyan text-black font-mono font-bold text-xs hover:bg-cyber-cyan/90 transition-all flex items-center space-x-2"
-            >
-              <span>ENTER SECURE SYSTEM</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+            <>
+              <Link
+                href="/login"
+                className="px-4 py-2 border border-cyber-cyan/50 text-cyber-cyan hover:bg-cyber-cyan hover:text-black font-mono font-bold text-xs transition-all flex items-center space-x-1"
+              >
+                <span>LOGIN</span>
+              </Link>
+              <Link
+                href="/signup"
+                className="px-4 py-2 bg-cyber-cyan text-black font-mono font-bold text-xs hover:bg-cyber-cyan/90 transition-all flex items-center space-x-1.5 shadow-md shadow-cyber-cyan/20"
+              >
+                <span>CREATE ACCOUNT</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </>
           )}
         </div>
       </header>
@@ -83,19 +91,38 @@ export default function LandingPage() {
             </p>
 
             <div className="pt-4 flex flex-wrap gap-4">
-              <Link
-                href={user ? '/dashboard' : '/login'}
-                className="px-8 py-3.5 bg-cyber-cyan text-black font-mono font-bold text-sm hover:bg-cyber-cyan/90 transition-all flex items-center space-x-2 shadow-lg shadow-cyber-cyan/20"
-              >
-                <span>ENTER SECURE SYSTEM</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+              {user ? (
+                <Link
+                  href="/dashboard"
+                  className="px-8 py-3.5 bg-cyber-cyan text-black font-mono font-bold text-sm hover:bg-cyber-cyan/90 transition-all flex items-center space-x-2 shadow-lg shadow-cyber-cyan/20"
+                >
+                  <span>ACCESS COMMAND DASHBOARD</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              ) : (
+                <>
+                  <Link
+                    href="/login"
+                    className="px-8 py-3.5 bg-cyber-cyan text-black font-mono font-bold text-sm hover:bg-cyber-cyan/90 transition-all flex items-center space-x-2 shadow-lg shadow-cyber-cyan/20"
+                  >
+                    <span>LOGIN</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+
+                  <Link
+                    href="/signup"
+                    className="px-8 py-3.5 bg-cyber-surface text-gray-200 border border-cyber-border font-mono text-sm hover:border-cyber-cyan hover:text-white transition-colors flex items-center space-x-2"
+                  >
+                    <span>CREATE ACCOUNT</span>
+                  </Link>
+                </>
+              )}
 
               <a
                 href="#features"
-                className="px-8 py-3.5 bg-cyber-surface text-gray-200 border border-cyber-border font-mono text-sm hover:border-cyber-cyan transition-colors"
+                className="px-6 py-3.5 bg-transparent text-gray-400 hover:text-cyber-cyan font-mono text-sm transition-colors flex items-center"
               >
-                EXPLORE PLATFORM
+                EXPLORE PLATFORM ↓
               </a>
             </div>
 
