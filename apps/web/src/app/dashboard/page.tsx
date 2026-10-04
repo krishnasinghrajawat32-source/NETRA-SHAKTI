@@ -243,7 +243,7 @@ export default function DashboardPage() {
                   <ResponsiveContainer width="100%" height="80%">
                     <PieChart>
                       <Pie
-                        data={stats.classificationDistribution}
+                        data={stats?.classificationDistribution || []}
                         dataKey="count"
                         nameKey="classification"
                         cx="50%"
@@ -252,7 +252,7 @@ export default function DashboardPage() {
                         outerRadius={80}
                         paddingAngle={5}
                       >
-                        {stats.classificationDistribution.map((entry, index) => (
+                        {(stats?.classificationDistribution || []).map((entry, index) => (
                           <Cell
                             key={`cell-${index}`}
                             fill={CLASSIFICATION_COLORS[entry.classification] || '#00F0FF'}
@@ -266,7 +266,7 @@ export default function DashboardPage() {
                   </ResponsiveContainer>
 
                   <div className="flex flex-wrap gap-2 justify-center text-[10px] font-mono mt-2">
-                    {stats.classificationDistribution.map(entry => (
+                    {(stats?.classificationDistribution || []).map(entry => (
                       <div key={entry.classification} className="flex items-center space-x-1">
                         <span
                           className="w-2.5 h-2.5 rounded-full"
@@ -315,10 +315,10 @@ export default function DashboardPage() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-cyber-border/40">
-                    {stats.recentActivity.map((evt: any) => (
+                    {(stats?.recentActivity || []).map((evt: any) => (
                       <tr key={evt.id} className="hover:bg-cyber-surface/40">
                         <td className="py-2.5 text-gray-400">
-                          {new Date(evt.createdAt).toLocaleTimeString()}
+                          {evt.createdAt ? new Date(evt.createdAt).toLocaleTimeString() : 'RECENT'}
                         </td>
                         <td className="py-2.5 text-cyber-cyan font-semibold">
                           {evt.eventType}

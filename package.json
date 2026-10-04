@@ -8,6 +8,8 @@
   ],
   "description": "Cryptographic Attribution and Immutable Decryption Provenance System",
   "scripts": {
+    "build": "npm --prefix apps/web run build",
+    "install:web": "npm --prefix apps/web install",
     "dev:api": "npm --prefix apps/api run dev",
     "dev:web": "npm --prefix apps/web run dev",
     "build": "npm run build:packages && npm --prefix apps/web run build",

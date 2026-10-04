@@ -1,66 +1,157 @@
 import 'reflect-metadata';
+
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe, Logger } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { AppModule } from './app.module';
 
-const cookieParser = require('cookie-parser');
-const helmet = require('helmet');
+import { AppModule } from './app.module';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { TransformInterceptor } from './common/interceptors/transform.interceptor';
 import { appConfig } from '@netra-shakti/config';
 
+const cookieParser = require('cookie-parser');
+const helmet = require('helmet');
+
 async function bootstrap() {
   const logger = new Logger('NETRA_SHAKTI_API');
+
   const app = await NestFactory.create(AppModule);
 
-  // Security Headers
+  /*
+   * -------------------------------------------------------
+   * SECURITY HEADERS
+   * -------------------------------------------------------
+   */
   app.use(
     helmet({
-      contentSecurityPolicy: false, // Managed per route or client
+      contentSecurityPolicy: false,
       crossOriginEmbedderPolicy: false
     })
   );
 
-  // Cookie Parser for HttpOnly Session Management
+  /*
+   * -------------------------------------------------------
+   * COOKIE PARSER
+   * Required for HttpOnly authentication cookies
+   * -------------------------------------------------------
+   */
   app.use(cookieParser());
 
-  // Dynamic CORS for local dev, Vercel preview/production deployments, and configured domains
+  /*
+   * -------------------------------------------------------
+   * ALLOWED FRONTEND ORIGINS
+   * -------------------------------------------------------
+   *
+   * Production URL should be configured using:
+   *
+   * FRONTEND_URL=https://netra-shakti-jy7p.vercel.app
+   *
+   * or your custom production domain.
+   */
+
   const staticOrigins = [
     appConfig.APP_URL,
     process.env.FRONTEND_URL,
     process.env.CORS_ORIGIN,
+
+    // Local frontend
     'http://localhost:3000',
     'http://127.0.0.1:3000',
     'http://localhost:3001',
     'http://127.0.0.1:3001'
-  ].filter(Boolean) as string[];
+  ].filter((origin): origin is string => Boolean(origin));
+
+  /*
+   * -------------------------------------------------------
+   * CORS CONFIGURATION
+   * -------------------------------------------------------
+   */
 
   app.enableCors({
-    origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
-      // Allow requests with no origin (e.g. mobile apps, curl, server-side fetch)
-      if (!origin) return callback(null, true);
-
-      const isAllowed =
-        staticOrigins.includes(origin) ||
-        origin.endsWith('.vercel.app') ||
-        /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin);
-
-      if (isAllowed) {
-        callback(null, true);
-      } else {
-        callback(null, false);
+    origin: (
+      origin: string | undefined,
+      callback: (err: Error | null, allow?: boolean) => void
+    ) => {
+      /*
+       * Allow requests without browser Origin header.
+       *
+       * Examples:
+       * - Postman
+       * - curl
+       * - server-to-server requests
+       */
+      if (!origin) {
+        return callback(null, true);
       }
+
+      /*
+       * Production / environment configured URLs
+       */
+      const isStaticAllowed = staticOrigins.includes(origin);
+
+      /*
+       * NETRA SHAKTI Vercel Preview URLs
+       *
+       * Example:
+       *
+       * https://netra-shakti-jy7p-xxxxx-
+       * krishnasinghrajawat32-source.vercel.app
+       */
+      const isNetraShaktiPreview =
+        origin.startsWith('https://netra-shakti-jy7p-') &&
+        origin.endsWith(
+          '-krishnasinghrajawat32-source.vercel.app'
+        );
+
+      if (isStaticAllowed || isNetraShaktiPreview) {
+        return callback(null, true);
+      }
+
+      logger.warn(`Blocked CORS origin: ${origin}`);
+
+      return callback(
+        new Error('Origin not allowed by CORS policy'),
+        false
+      );
     },
+
+    /*
+     * Required for HttpOnly authentication cookies
+     */
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'X-Request-ID', 'X-Device-Fingerprint']
+
+    methods: [
+      'GET',
+      'POST',
+      'PUT',
+      'PATCH',
+      'DELETE',
+      'OPTIONS'
+    ],
+
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization',
+      'X-Requested-With',
+      'X-Request-ID',
+      'X-Device-Fingerprint'
+    ]
   });
 
-  // Global Prefix
+  /*
+   * -------------------------------------------------------
+   * GLOBAL API PREFIX
+   * -------------------------------------------------------
+   */
+
   app.setGlobalPrefix('api/v1');
 
-  // Global Validation
+  /*
+   * -------------------------------------------------------
+   * GLOBAL VALIDATION
+   * -------------------------------------------------------
+   */
+
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -69,35 +160,106 @@ async function bootstrap() {
     })
   );
 
-  // Global Interceptors and Filters
-  app.useGlobalInterceptors(new TransformInterceptor());
-  app.useGlobalFilters(new HttpExceptionFilter());
+  /*
+   * -------------------------------------------------------
+   * GLOBAL INTERCEPTORS
+   * -------------------------------------------------------
+   */
 
-  const port = appConfig.PORT || 4000;
+  app.useGlobalInterceptors(
+    new TransformInterceptor()
+  );
 
-  // OpenAPI Swagger Documentation
+  /*
+   * -------------------------------------------------------
+   * GLOBAL ERROR HANDLING
+   * -------------------------------------------------------
+   */
+
+  app.useGlobalFilters(
+    new HttpExceptionFilter()
+  );
+
+  /*
+   * -------------------------------------------------------
+   * SERVER PORT
+   * -------------------------------------------------------
+   */
+
+  const port =
+    Number(process.env.PORT) ||
+    appConfig.PORT ||
+    4000;
+
+  /*
+   * -------------------------------------------------------
+   * SWAGGER / OPENAPI
+   * -------------------------------------------------------
+   */
+
   try {
-    const config = new DocumentBuilder()
-      .setTitle('NETRA SHAKTI // TRACE THE ORIGIN, PROVE THE TRUTH')
-      .setDescription(
-        'DEFENCE-grade document distribution, post-quantum cryptography, invisible forensic watermarking, and immutable decryption provenance ledger.'
-      )
-      .setVersion('1.0.0')
-      .addBearerAuth()
-      .addCookieAuth('ns_access_token')
-      .build();
+    const swaggerConfig =
+      new DocumentBuilder()
+        .setTitle(
+          'NETRA SHAKTI // TRACE THE ORIGIN, PROVE THE TRUTH'
+        )
+        .setDescription(
+          'DEFENCE-grade document distribution, post-quantum cryptography, invisible forensic watermarking, and immutable decryption provenance ledger.'
+        )
+        .setVersion('1.0.0')
+        .addBearerAuth()
+        .addCookieAuth('ns_access_token')
+        .build();
 
-    const document = SwaggerModule.createDocument(app, config);
-    SwaggerModule.setup('api/docs', app, document);
-    logger.log(`Swagger OpenAPI Documentation -> http://localhost:${port}/api/docs`);
-  } catch (err) {
-    logger.warn(`Swagger documentation initialized in offline schema mode: ${(err as Error).message}`);
+    const document =
+      SwaggerModule.createDocument(
+        app,
+        swaggerConfig
+      );
+
+    SwaggerModule.setup(
+      'api/docs',
+      app,
+      document
+    );
+
+    logger.log(
+      `Swagger OpenAPI Documentation -> http://0.0.0.0:${port}/api/docs`
+    );
+  } catch (error) {
+    logger.warn(
+      `Swagger documentation initialized in offline schema mode: ${
+        error instanceof Error
+          ? error.message
+          : 'Unknown error'
+      }`
+    );
   }
 
-  await app.listen(port, '0.0.0.0');
-  logger.log(`NETRA SHAKTI API running on port ${port} -> http://localhost:${port}/api/v1`);
-  // Ensure event loop stays active indefinitely in background task runners
-  setInterval(() => {}, 1000 * 60 * 60);
+  /*
+   * -------------------------------------------------------
+   * START SERVER
+   * -------------------------------------------------------
+   */
+
+  await app.listen(port);
+
+  logger.log(
+    `NETRA SHAKTI API running on port ${port} -> http://localhost:${port}/api/v1`
+  );
 }
 
-bootstrap();
+bootstrap().catch((error) => {
+  const logger = new Logger(
+    'NETRA_SHAKTI_BOOTSTRAP'
+  );
+
+  logger.error(
+    'Failed to start NETRA SHAKTI API',
+    error instanceof Error
+      ? error.stack
+      : String(error)
+  );
+
+  process.exit(1);
+});

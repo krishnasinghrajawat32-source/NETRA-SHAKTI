@@ -459,11 +459,15 @@ async function seedTest() {
   console.log('====================================================');
 }
 
-seedTest()
-  .catch(err => {
-    console.error('Test seed failed:', err);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+export { seedTest };
+
+if (require.main === module) {
+  seedTest()
+    .catch(err => {
+      console.error('Test seed failed:', err);
+      process.exit(1);
+    })
+    .finally(async () => {
+      await prisma.$disconnect();
+    });
+}
