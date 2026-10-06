@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "npx ts-node -r tsconfig-paths/register src/main.ts",
     "build": "npx nest build",
-    "start:prod": "node dist/apps/api/src/main.js",
+    "start:prod": "node dist/main.js",
     "prisma:generate": "npx prisma generate --schema=prisma/schema.prisma",
     "prisma:migrate": "npx prisma migrate deploy --schema=prisma/schema.prisma",
     "admin:bootstrap": "npx ts-node -r tsconfig-paths/register src/scripts/bootstrap-admin.ts",

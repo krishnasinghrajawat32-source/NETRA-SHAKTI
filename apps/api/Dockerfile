@@ -4,8 +4,10 @@ WORKDIR /app
 COPY package*.json ./
 COPY packages ./packages
 COPY apps/api ./apps/api
+COPY scripts ./scripts
 RUN npm install --ignore-scripts
 RUN npm rebuild
+RUN npx prisma generate --schema=apps/api/prisma/schema.prisma
 RUN npm run build --workspace=packages/shared-types
 RUN npm run build --workspace=packages/crypto
 RUN npm run build --workspace=packages/watermark
@@ -19,4 +21,4 @@ WORKDIR /app
 ENV NODE_ENV=production
 COPY --from=builder /app /app
 EXPOSE 4000 10000
-CMD ["npm", "run", "start:prod", "--workspace=apps/api"]
+CMD ["npm", "run", "start:render"]

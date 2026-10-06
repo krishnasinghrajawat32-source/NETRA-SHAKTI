@@ -49,10 +49,15 @@ async function bootstrap() {
    * or your custom production domain.
    */
 
+  const parseOrigins = (raw?: string): string[] => {
+    if (!raw) return [];
+    return raw.split(',').map((s) => s.trim()).filter(Boolean);
+  };
+
   const staticOrigins = [
-    appConfig.APP_URL,
-    process.env.FRONTEND_URL,
-    process.env.CORS_ORIGIN,
+    ...parseOrigins(appConfig.APP_URL),
+    ...parseOrigins(process.env.FRONTEND_URL),
+    ...parseOrigins(process.env.CORS_ORIGIN),
 
     // Local frontend
     'http://localhost:3000',
@@ -74,13 +79,16 @@ async function bootstrap() {
     ) => {
       /*
        * Allow requests without browser Origin header.
-       *
-       * Examples:
-       * - Postman
-       * - curl
-       * - server-to-server requests
+       * Examples: Postman, curl, server-to-server requests
        */
       if (!origin) {
+        return callback(null, true);
+      }
+
+      /*
+       * If CORS_ORIGIN is wildcard or explicitly allowed
+       */
+      if (process.env.CORS_ORIGIN === '*' || staticOrigins.includes('*')) {
         return callback(null, true);
       }
 
@@ -90,20 +98,13 @@ async function bootstrap() {
       const isStaticAllowed = staticOrigins.includes(origin);
 
       /*
-       * NETRA SHAKTI Vercel Preview URLs
-       *
-       * Example:
-       *
-       * https://netra-shakti-jy7p-xxxxx-
-       * krishnasinghrajawat32-source.vercel.app
+       * NETRA SHAKTI Vercel or Render domain matches
        */
-      const isNetraShaktiPreview =
-        origin.startsWith('https://netra-shakti-jy7p-') &&
-        origin.endsWith(
-          '-krishnasinghrajawat32-source.vercel.app'
-        );
+      const isDeployDomain =
+        origin.endsWith('.vercel.app') ||
+        origin.endsWith('.onrender.com');
 
-      if (isStaticAllowed || isNetraShaktiPreview) {
+      if (isStaticAllowed || isDeployDomain) {
         return callback(null, true);
       }
 
@@ -242,10 +243,10 @@ async function bootstrap() {
    * -------------------------------------------------------
    */
 
-  await app.listen(port);
+  await app.listen(port, '0.0.0.0');
 
   logger.log(
-    `NETRA SHAKTI API running on port ${port} -> http://localhost:${port}/api/v1`
+    `NETRA SHAKTI API running on port ${port} -> http://0.0.0.0:${port}/api/v1`
   );
 }
 

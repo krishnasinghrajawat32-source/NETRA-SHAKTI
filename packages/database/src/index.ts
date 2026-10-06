@@ -375,6 +375,43 @@ class NetraDatabaseEngine {
 }
 
 const globalDb = new NetraDatabaseEngine();
+let activeClient: any = null;
 
-export const prisma = globalDb;
+export function getDatabaseClient(): any {
+  if (activeClient) return activeClient;
+
+  const dbUrl = process.env.DATABASE_URL;
+  if (dbUrl && (dbUrl.startsWith('postgresql://') || dbUrl.startsWith('postgres://'))) {
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const { PrismaClient } = require('@prisma/client');
+      activeClient = new PrismaClient({
+        datasources: {
+          db: {
+            url: dbUrl
+          }
+        }
+      });
+      console.log('[NETRA_SHAKTI] Initialized PostgreSQL connection via PrismaClient');
+      return activeClient;
+    } catch (err) {
+      console.warn('[NETRA_SHAKTI] Fallback to embedded engine (PrismaClient init failed):', err);
+    }
+  }
+
+  activeClient = globalDb;
+  return activeClient;
+}
+
+export const prisma: any = new Proxy({}, {
+  get(_target, prop) {
+    const client = getDatabaseClient();
+    const value = client[prop];
+    if (typeof value === 'function') {
+      return value.bind(client);
+    }
+    return value;
+  }
+});
+
 export default prisma;

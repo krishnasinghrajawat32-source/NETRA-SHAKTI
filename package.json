@@ -8,7 +8,6 @@
   ],
   "description": "Cryptographic Attribution and Immutable Decryption Provenance System",
   "scripts": {
-    "build": "npm --prefix apps/web run build",
     "install:web": "npm --prefix apps/web install",
     "dev:api": "npm --prefix apps/api run dev",
     "dev:web": "npm --prefix apps/web run dev",
@@ -17,6 +16,9 @@
     "build:api": "npm run build:packages && npm --prefix apps/api run build",
     "build:web": "npm run build:packages && npm --prefix apps/web run build",
     "build:all": "npm run build:packages && npm --prefix apps/api run build && npm --prefix apps/web run build",
+    "build:render": "npx prisma generate --schema=apps/api/prisma/schema.prisma && npm run build:packages && npm --prefix apps/api run build",
+    "start:api": "npm --prefix apps/api run start:prod",
+    "start:render": "node scripts/start-render.js",
     "admin:bootstrap": "npm --prefix apps/api run admin:bootstrap",
     "admin:create": "npm --prefix apps/api run admin:create",
     "seed:test": "npm --prefix apps/api run seed:test",
