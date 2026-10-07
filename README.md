@@ -3,6 +3,8 @@
 
 > **TRACE THE ORIGIN, PROVE THE TRUTH**
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/krishnasinghrajawat32-source/NETRA-SHAKTI)
+
 ---
 
 ## Overview
